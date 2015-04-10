@@ -1,0 +1,99 @@
+\documentclass{BGSU}
+% template.tex version 1.3
+
+\title{Dissertation title goes here}
+\author{Name of student}
+\degree{DOCTOR OF PHILOSOPHY}
+\date{June 2015}
+
+\advisor{Name of advisor}
+\gfr{\\Name of graduate faculty rep} % graduate faculty representative
+\committee{\\Name of other committee members}
+
+\usepackage{amsmath}
+\usepackage{amssymb}    % allows the use of AMS symbols like blackboard bold
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{amsthm}     % allows AMS definitions for theorems, proofs, etc.
+\usepackage{epstopdf}
+\newtheorem{theorem}{\bf Theorem}[chapter]         % Allow numbered theorems
+\newtheorem{proposition}[theorem]{\bf Proposition} % Number props with theorems
+\newtheorem{remark}[theorem]{\bf Remark}           % Number remarks too
+\newtheorem{lemma}{Lemma}[chapter]
+\numberwithin{equation}{chapter}
+\setcounter{equation}{0}
+
+
+
+\begin{document}
+
+\frontmatter
+
+\maketitle
+%
+\mbox{}\newpage
+
+\begin{abstract}
+\input{abstract}
+\end{abstract}
+
+%\mbox{}\newpage\mbox{} % this will give one blank page.
+% optional section ``Some students choose to personalize their manuscripts
+% with an appropriate quotation or illustration''
+% formatting and placement is up to you.
+
+% optional but encouraged section ``as a means to recognize and express
+% appreciation to the people who were influential in preparing and completing
+% the manuscript''
+\begin{acknowledgments}
+\input{acknowledgments}
+\end{acknowledgments}
+
+\mbox{}\newpage
+\tableofcontents
+
+\listoffigures
+
+\mbox{}\newpage\mbox{}  % this will give one blank page.
+\listoftables
+
+\mainmatter % starts over page counter and gives regular page numbers
+
+\chapter{Chapter 1 title here}
+\numberwithin{equation}{chapter}
+\input{chapter1}
+
+%\mbox{}\newpage\mbox{}
+\chapter{Chapter 2 title here}
+\input{chapter2}
+
+%\mbox{}\newpage\mbox{}
+\chapter{Chapter 3 title here}
+\input{chapter3}
+
+%\mbox{}\newpage\mbox{}
+\chapter{Chapter 4 title here}
+\input{chapter4}
+
+%\mbox{}\newpage\mbox{}
+\chapter{Chapter 5 title here}
+\input{chapter5}
+
+
+\backmatter
+
+\mbox{}\newpage
+\appendix
+\chapter{Appendix: Title of appendix}
+\input{appendix}
+
+\mbox{}\newpage\mbox{}
+% for using bibtex (you may use other bibliography types)
+\begin{thebibliography}{99}
+
+\bibitem{} Alam, K. and Cahoy, D.O. (1999). A test for equality of
+variances. \textit{Journal of Mathematical Sciences, Philippines,} {\bf{2}}(1), 1-19.
+
+\end{thebibliography}
+
+\end{document}
