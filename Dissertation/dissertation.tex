@@ -16,6 +16,8 @@
 \usepackage{caption}
 \usepackage{amsthm}     % allows AMS definitions for theorems, proofs, etc.
 \usepackage{epstopdf}
+\usepackage{times}    % Times New Roman
+\usepackage{titlesec} % allow to change the heading format 
 \newtheorem{theorem}{\bf Theorem}[chapter]         % Allow numbered theorems
 \newtheorem{proposition}[theorem]{\bf Proposition} % Number props with theorems
 \newtheorem{remark}[theorem]{\bf Remark}           % Number remarks too
@@ -24,14 +26,21 @@
 \setcounter{equation}{0}
 
 
+% The first level headings need to be centered and 12 point size
+\titleformat{\chapter}[display]% NEW
+    {\fontsize{12}{15}\bfseries\centering}{\chaptertitlename\ \thechapter}{1em}{}  %\fontsize{<size>}{<line space>}
+\titleformat{\section}
+    {\fontsize{12}{15}\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}
+    {\fontsize{12}{15}\bfseries}{\thesubsection}{1em}{}
 
 \begin{document}
 
 \frontmatter
 
 \maketitle
-%
-\mbox{}\newpage
+
+\copyrightpage
 
 \begin{abstract}
 \input{abstract}
@@ -65,27 +74,27 @@
 
 %\mbox{}\newpage\mbox{}
 \chapter{Chapter 2 title here}
+\numberwithin{equation}{chapter}
 \input{chapter2}
 
 %\mbox{}\newpage\mbox{}
 \chapter{Chapter 3 title here}
+\numberwithin{equation}{chapter}
 \input{chapter3}
 
 %\mbox{}\newpage\mbox{}
 \chapter{Chapter 4 title here}
+\numberwithin{equation}{chapter}
 \input{chapter4}
 
 %\mbox{}\newpage\mbox{}
 \chapter{Chapter 5 title here}
+\numberwithin{equation}{chapter}
 \input{chapter5}
 
 
 \backmatter
 
-\mbox{}\newpage
-\appendix
-\chapter{Appendix: Title of appendix}
-\input{appendix}
 
 \mbox{}\newpage\mbox{}
 % for using bibtex (you may use other bibliography types)
@@ -95,5 +104,10 @@
 variances. \textit{Journal of Mathematical Sciences, Philippines,} {\bf{2}}(1), 1-19.
 
 \end{thebibliography}
+\mbox{}\newpage
+\phantomsection
+\appendix
+\chapter{Appendix: Title of appendix}
+\input{appendix}
 
 \end{document}

@@ -33,7 +33,7 @@
   \let\@hstyle\@empty
   \def\@hstyle{headings}
 }
-% 
+%
 \def\@doctype{Dissertation}
 \DeclareOption{thesis}{
   \let\@doctype\empty
@@ -41,27 +41,27 @@
 }
 
 % Pass papersize options to book and geometry.
-\DeclareOption{a4paper}{\PassOptionsToClass{a4paper}{book} 
+\DeclareOption{a4paper}{\PassOptionsToClass{a4paper}{book}
                         \PassOptionsToPackage{a4paper}{geometry}
                         \PassOptionsToPackage{a4paper}{hyperref}
 }
-\DeclareOption{a5paper}{\PassOptionsToClass{a5paper}{book} 
+\DeclareOption{a5paper}{\PassOptionsToClass{a5paper}{book}
                         \PassOptionsToPackage{a5paper}{geometry}
                         \PassOptionsToPackage{a5paper}{hyperref}
 }
-\DeclareOption{letterpaper}{\PassOptionsToClass{letterpaper}{book} 
+\DeclareOption{letterpaper}{\PassOptionsToClass{letterpaper}{book}
                             \PassOptionsToPackage{letterpaper}{geometry}
                             \PassOptionsToPackage{letterpaper}{hyperref}
 }
-\DeclareOption{legalpaper}{\PassOptionsToClass{legalpaper}{book} 
+\DeclareOption{legalpaper}{\PassOptionsToClass{legalpaper}{book}
                            \PassOptionsToPackage{legalpaper}{geometry}
                            \PassOptionsToPackage{legalpaper}{hyperref}
 }
-\DeclareOption{executivepaper}{\PassOptions{executivepaper}{book} 
+\DeclareOption{executivepaper}{\PassOptions{executivepaper}{book}
                                \PassOptionsToPackage{executivepaper}{geometry}
                                \PassOptionsToPackage{executivepaper}{hyperref}
 }
-\DeclareOption{landscape}{\PassOptionsToClass{landscape}{book} 
+\DeclareOption{landscape}{\PassOptionsToClass{landscape}{book}
                           \PassOptionsToPackage{landscape}{geometry}}
 \DeclareOption{draft}{\PassOptionsToClass{draft}{book}}
 \DeclareOption{final}{\PassOptionsToClass{final}{book}}
@@ -105,11 +105,12 @@
 }{}
 
 % oneside puts all pagenumbers on right hand side
-% 12pt is required 
+% 12pt is required
 
 \LoadClass{book}
 
 \pagestyle{\@hstyle}
+
 
 % Below used to set margins
 % 1 inch margins pagenumbers only in 3/4 inch, footnotes included as part
@@ -128,7 +129,7 @@
 
 % define some variable for the BGSU maketitle.
 % gfr is Graduate Faculty Advisor
-% Committee is the remainder of the committee with 
+% Committee is the remainder of the committee with
 % a \\ \\ after each name.
 % Degree is the degree sought
 
@@ -144,7 +145,7 @@
 
 % make sure to include pdftex in all relevent packages
 % as it will automatically put bookmarks in pdf files generated
-\RequirePackage{hyperref} 
+\RequirePackage{hyperref}
 \hypersetup{%
   bookmarksnumbered,
   plainpages=false,
@@ -161,32 +162,32 @@
   pdfauthor=\@author,
   pdftitle=\@title,
   pdfsubject=\@doctype,
-  pdfkeywords=\@keywords, 
+  pdfkeywords=\@keywords,
   pdfcreator={BGSU.cls v\@BGSUv \ by Nate Iverson},
-} 
+}
 
 \begin{titlepage}%
    \singlespacing
    \thispagestyle{empty}
-   
+
    \begin{center}
     \vspace*\fill
 
     \textbf{\MakeUppercase{\@title}}
     \vspace{1.25in}
-    % Adjusts spacing for masters thesis 
+    % Adjusts spacing for masters thesis
     \ifthenelse{\equal{\@doctype}{Dissertation}}{}
     {\vspace*{0.8in}}
 
 
-    \@author 
+    \@author
     \vspace{1.25in}
 
     A \@doctype\\[.2in]
 
-    Submitted to the Graduate College 
+    Submitted to the Graduate College
     of Bowling Green \\ State University
-    in partial fulfillment of \\ the requirements 
+    in partial fulfillment of \\ the requirements
     for the degree of\\[.35in]
 
     \MakeUppercase{\@degree} \\[.2in]
@@ -209,8 +210,8 @@
     }
 
     }\end{flushright}
-  
-  % Adjusts spacing for masters thesis 
+
+  % Adjusts spacing for masters thesis
   \ifthenelse{\equal{\@doctype}{Dissertation}}{}
   {\vspace*{0.8in}}
 \end{titlepage}
@@ -222,21 +223,22 @@
   \RaggedRight}{}
 }
 
+
 \newenvironment{abstract}{\clearpage
 \pdfbookmark[1]{Abstract}{abstract}
 \label{abstract}
 \thispagestyle{myheadings}
-\begin{center}\textbf{ABSTRACT}\\ \end{center}
+\begin{center} \textbf{ABSTRACT}\\ \end{center}
   \begin{flushleft}{\@advisor , Advisor\\} \end{flushleft}
 
-}{\clearpage
+}{\clearpage 
 }
 
-\newcommand{\copyrightpage}{  
+\newcommand{\copyrightpage}{
   \thispagestyle{empty}
   \vspace*\fill
-  \begin{center} 
- \begin{minipage}[!b]{\linewidth} 
+  \begin{center}
+ \begin{minipage}[!b]{\linewidth}
   \pdfbookmark[1]{Copyright}{copyright}
     \begin{center}
        Copyright \copyright \@date\\
@@ -254,72 +256,58 @@
 \thispagestyle{myheadings}
   \begin{center} \textbf{ACKNOWLEDGMENTS}
   \end{center}
-
-}{\clearpage
+}{\clearpage 
 }
 
-\newenvironment{acknowledgements}{\clearpage
-\pdfbookmark[1]{Acknowledgements}{Acknowledgements}
-\thispagestyle{myheadings}
-  \begin{center} \textbf{ACKNOWLEDGEMENTS}
-  \end{center}
-
-}{\clearpage
-}
 
 \newenvironment{dedication}{\thispagestyle{myheadings}
 \pdfbookmark[1]{Dedication}{dedication}
-
 \begin{center}
 \vspace*{2.5in}
-
 }{\end{center}\clearpage
 }
 
 \newenvironment{preface}{\clearpage
-
 \thispagestyle{myheadings}
 \pdfbookmark[1]{Preface}{preface}
-
 \begin{center} \textbf{PREFACE}
 \end{center}
-
 }{\clearpage
 }
 
 
 % This should fix a problem with the chapters changing the
 % pagestyle
+
 \renewcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi
                     \thispagestyle{\@hstyle}%
                     \global\@topnum\z@
                     \@afterindentfalse
                     \secdef\@chapter\@schapter}
 
-
 % This lets me define the chapter command as defined by book.cls
 % into a new name, so that I can change the actual chapter command.
-
 % \let\Oldchapter\chapter
-% \renewcommand{\chapter}[3]{
+% \renewcommand{\chapter}[1]{
 %   \Oldchapter{#1}{#2}{#3} \thispagestyle{empty}
 %}
 
 % For some reason the above does not work, gone back to old method
-\renewcommand{\contentsname}{Table of Contents}
+\renewcommand{\contentsname}{TABLE OF CONTENT}
 \renewcommand{\tableofcontents}{\clearpage
   \pdfbookmark[1]{\contentsname}{contents}
   \@makechapterhead{\contentsname}
   \@starttoc{toc}
 }
 
+\renewcommand{\listfigurename}{LIST OF FIGURES}
 \renewcommand{\listoffigures}{\clearpage
 \pdfbookmark[1]{\listfigurename}{figures}
 \@makechapterhead{\listfigurename}
 \@starttoc{lof}
 }
 
-
+\renewcommand{\listtablename}{LIST OF TABLES}
 \renewcommand{\listoftables}{\clearpage
 \pdfbookmark[1]{\listtablename}{tables}
 \@makechapterhead{
@@ -327,8 +315,8 @@
 \@starttoc{lot}
 }
 
-% This is to ensure that Chapter appears before 
-% the toc 
+% This is to ensure that Chapter appears before
+% the toc
 \renewcommand{\chaptername}{CHAPTER}
 \def\@chapter[#1]#2{\ifnum \c@secnumdepth >\m@ne
                        \if@mainmatter
@@ -354,7 +342,7 @@
 
 % The following puts the bibliography in the table of contents.
 
-\renewcommand{\bibname}{BIBLIOGRAPHY} 
+\renewcommand{\bibname}{BIBLIOGRAPHY}
 \renewenvironment{thebibliography}[1]
      {\chapter*{\bibname}%
       \addcontentsline{toc}{chapter}{\bibname}
@@ -375,4 +363,6 @@
      {\def\@noitemerr
        {\@latex@warning{Empty `thebibliography' environment}}%
       \endlist}
+
+
 
