@@ -6,6 +6,7 @@
 % runningheader
 % thesis
 % raggedbottom (default)
+% linktocpage (makes the link in the table of contents the page number instead of the text)
 %
 % options from book.cls (also passed to geometry package):
 %
@@ -22,10 +23,29 @@
 % leqno
 % fleqn
 % openbib
+% colorlinks
+%    This file is part of BGSU.cls The BGSU (Thesis and Dissertaion LaTeX class)
+%
+%    BGSU.cls is free software: you can redistribute it and/or modify
+%    it under the terms of the GNU General Public License as published by
+%    the Free Software Foundation, either version 3 of the License, or
+%    (at your option) any later version.
+%
+%    BGSU.cls is distributed in the hope that it will be useful,
+%    but WITHOUT ANY WARRANTY; without even the implied warranty of
+%    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+%    GNU General Public License for more details.
+%
+%    You should have received a copy of the GNU General Public License
+%    along with BGSU.cls  If not, see <http://www.gnu.org/licenses/>.
+%
+%    Note that this only applies to the example and template files and BGSU.cls 
+%    itself. Any actual document content (such as your thesis or dissertation text)
+%    belongs solely to you and you can do with it what you please.
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{BGSU}[6/21/2006 version 1.0.4]
-\def\@BGSUv{1.0.4}
+\ProvidesClass{BGSU}[6/03/2011 version 1.1.2]
+\def\@BGSUv{1.1.2}
 % Lets us pick the header type by an option
 \def\@hstyle{myheadings}
 \def\@rright{false}
@@ -33,35 +53,40 @@
   \let\@hstyle\@empty
   \def\@hstyle{headings}
 }
-%
+% 
 \def\@doctype{Dissertation}
 \DeclareOption{thesis}{
   \let\@doctype\empty
   \def\@doctype{Thesis}
 }
-
+\def\@colorlinks{false}
+\DeclareOption{colorlinks}{
+\let\@colorlinks\empty
+\def\@colorlinks{true}
+}
+\DeclareOption{linktocpage}{\PassOptionsToClass{linktocpage}{hyperref}}
 % Pass papersize options to book and geometry.
-\DeclareOption{a4paper}{\PassOptionsToClass{a4paper}{book}
+\DeclareOption{a4paper}{\PassOptionsToClass{a4paper}{book} 
                         \PassOptionsToPackage{a4paper}{geometry}
                         \PassOptionsToPackage{a4paper}{hyperref}
 }
-\DeclareOption{a5paper}{\PassOptionsToClass{a5paper}{book}
+\DeclareOption{a5paper}{\PassOptionsToClass{a5paper}{book} 
                         \PassOptionsToPackage{a5paper}{geometry}
                         \PassOptionsToPackage{a5paper}{hyperref}
 }
-\DeclareOption{letterpaper}{\PassOptionsToClass{letterpaper}{book}
+\DeclareOption{letterpaper}{\PassOptionsToClass{letterpaper}{book} 
                             \PassOptionsToPackage{letterpaper}{geometry}
                             \PassOptionsToPackage{letterpaper}{hyperref}
 }
-\DeclareOption{legalpaper}{\PassOptionsToClass{legalpaper}{book}
+\DeclareOption{legalpaper}{\PassOptionsToClass{legalpaper}{book} 
                            \PassOptionsToPackage{legalpaper}{geometry}
                            \PassOptionsToPackage{legalpaper}{hyperref}
 }
-\DeclareOption{executivepaper}{\PassOptions{executivepaper}{book}
+\DeclareOption{executivepaper}{\PassOptions{executivepaper}{book} 
                                \PassOptionsToPackage{executivepaper}{geometry}
                                \PassOptionsToPackage{executivepaper}{hyperref}
 }
-\DeclareOption{landscape}{\PassOptionsToClass{landscape}{book}
+\DeclareOption{landscape}{\PassOptionsToClass{landscape}{book} 
                           \PassOptionsToPackage{landscape}{geometry}}
 \DeclareOption{draft}{\PassOptionsToClass{draft}{book}}
 \DeclareOption{final}{\PassOptionsToClass{final}{book}}
@@ -95,22 +120,21 @@
 
 % Most Book Options are passed on
 
-\ExecuteOptions{dvips,letterpaper,raggedbottom}
+\ExecuteOptions{pdftex,letterpaper,raggedbottom}
 \ProcessOptions
 
 \RequirePackage{ifthen}
-
+\RequirePackage{calc}
 \ifthenelse{\equal{\@rright}{true}}{
 \RequirePackage{ragged2e}
 }{}
 
 % oneside puts all pagenumbers on right hand side
-% 12pt is required
+% 12pt is required 
 
 \LoadClass{book}
-
+\usepackage[noTeX]{mmap}
 \pagestyle{\@hstyle}
-
 
 % Below used to set margins
 % 1 inch margins pagenumbers only in 3/4 inch, footnotes included as part
@@ -155,7 +179,7 @@
 }
 
 \renewcommand{\maketitle}{
-{\pdfbookmark[1]{\@title}{titlepage}}
+{\pdfbookmark[1]{TITLE PAGE}{titlepage}}
 % The below needs to be in the actual document aka after \@author
 % have been defined. That is why here.
 \hypersetup{%
@@ -225,7 +249,7 @@
 
 
 \newenvironment{abstract}{\clearpage
-\pdfbookmark[1]{Abstract}{abstract}
+\pdfbookmark[1]{ABSTRACT}{abstract}
 \label{abstract}
 \thispagestyle{myheadings}
 \begin{center} \textbf{ABSTRACT}\\ \end{center}
@@ -235,11 +259,11 @@
 }
 
 \newcommand{\copyrightpage}{
+  \pdfbookmark[1]{COPYRIGHT}{copyright}
   \thispagestyle{empty}
   \vspace*\fill
   \begin{center}
  \begin{minipage}[!b]{\linewidth}
-  \pdfbookmark[1]{Copyright}{copyright}
     \begin{center}
        Copyright \copyright \@date\\
        \@author \\
@@ -252,7 +276,7 @@
 }
 
 \newenvironment{acknowledgments}{\clearpage
-\pdfbookmark[1]{Acknowledgments}{Acknowledgments}
+\pdfbookmark[1]{ACKNOWLEDGMENTS}{Acknowledgments}
 \thispagestyle{myheadings}
   \begin{center} \textbf{ACKNOWLEDGMENTS}
   \end{center}
@@ -261,7 +285,7 @@
 
 
 \newenvironment{dedication}{\thispagestyle{myheadings}
-\pdfbookmark[1]{Dedication}{dedication}
+\pdfbookmark[1]{DEDICATION}{dedication}
 \begin{center}
 \vspace*{2.5in}
 }{\end{center}\clearpage
@@ -269,7 +293,7 @@
 
 \newenvironment{preface}{\clearpage
 \thispagestyle{myheadings}
-\pdfbookmark[1]{Preface}{preface}
+\pdfbookmark[1]{PREFACE}{preface}
 \begin{center} \textbf{PREFACE}
 \end{center}
 }{\clearpage
@@ -293,7 +317,7 @@
 %}
 
 % For some reason the above does not work, gone back to old method
-\renewcommand{\contentsname}{TABLE OF CONTENT}
+\renewcommand{\contentsname}{TABLE OF CONTENTS}
 \renewcommand{\tableofcontents}{\clearpage
   \pdfbookmark[1]{\contentsname}{contents}
   \@makechapterhead{\contentsname}
@@ -323,7 +347,7 @@
                          \refstepcounter{chapter}%
                          \typeout{\@chapapp\space\thechapter.}%
                          \addcontentsline{toc}{chapter}%
-                {\chaptername\space\protect\numberline{\thechapter:}#1}%
+                {\chaptername\space\protect\numberline{\thechapter }#1}%
                        \else
                          \addcontentsline{toc}{chapter}{#1}%
                        \fi
@@ -338,10 +362,10 @@
                     \else
                       \@makechapterhead{#2}%
                       \@afterheading
-                    \fi}
+                    \fi
+                    }
 
-% The following puts the bibliography in the table of contents.
-
+    
 \renewcommand{\bibname}{BIBLIOGRAPHY}
 \renewenvironment{thebibliography}[1]
      {\chapter*{\bibname}%
@@ -363,6 +387,8 @@
      {\def\@noitemerr
        {\@latex@warning{Empty `thebibliography' environment}}%
       \endlist}
+
+
 
 
 

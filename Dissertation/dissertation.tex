@@ -1,14 +1,33 @@
+%    This file is part of BGSU.cls The BGSU (Thesis and Dissertaion LaTeX class)
+%
+%    BGSU.cls is free software: you can redistribute it and/or modify
+%    it under the terms of the GNU General Public License as published by
+%    the Free Software Foundation, either version 3 of the License, or
+%    (at your option) any later version.
+%
+%    BGSU.cls is distributed in the hope that it will be useful,
+%    but WITHOUT ANY WARRANTY; without even the implied warranty of
+%    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+%    GNU General Public License for more details.
+%
+%    You should have received a copy of the GNU General Public License
+%    along with BGSU.cls  If not, see <http://www.gnu.org/licenses/>.
+%
+%    Note that this only applies to the example and template files and BGSU.cls
+%    itself. Any actual document content (such as your thesis or dissertation text)
+%    belongs solely to you and you can do with it what you please.
 \documentclass{BGSU}
-% template.tex version 1.3
 
-\title{Dissertation title goes here}
-\author{Name of student}
-\degree{DOCTOR OF PHILOSOPHY}
-\date{June 2015}
+% example.tex version 1.3
 
-\advisor{Name of advisor}
-\gfr{\\Name of graduate faculty representative} % graduate faculty representative
-\committee{\\Names of other \\committee members}  % put \\ after each name
+\title{An example dissertation}
+\author{Nate Iverson}
+\degree{doctor of philosophy}
+\date{August 2007}
+\advisor{Cornelio Hoffman}
+\gfr{\\Darth Vader} % graduate faculty representative
+\committee{\\Kit Chan \\ \\ Warren McGovern}
+
 
 \usepackage{amsmath}
 \usepackage{amssymb}    % allows the use of AMS symbols like blackboard bold
@@ -16,40 +35,47 @@
 \usepackage{caption}
 \usepackage{amsthm}     % allows AMS definitions for theorems, proofs, etc.
 \usepackage{epstopdf}
-\usepackage{times}    % Times New Roman
-\usepackage{titlesec} % allow to change the heading format 
-\newtheorem{theorem}{\bf Theorem}[chapter]         % Allow numbered theorems
+\usepackage{times}  % Times New Roman
+\usepackage{titlesec} % change the setting for headings
+\usepackage{listings} % allows program codes embeded with original forms
+
+
+\newtheorem{theorem}{\bf Theorem}[chapter]                  % Allow numbered theorems
 \newtheorem{proposition}[theorem]{\bf Proposition} % Number props with theorems
 \newtheorem{remark}[theorem]{\bf Remark}           % Number remarks too
 \newtheorem{lemma}{Lemma}[chapter]
 \numberwithin{equation}{chapter}
 \setcounter{equation}{0}
 
-
 % The first level headings need to be centered and 12 point size
 \titleformat{\chapter}[display]% NEW
-    {\fontsize{12}{15}\bfseries\centering}{\chaptertitlename\ \thechapter}{1em}{}  %\fontsize{<size>}{<line space>}
+    {\fontsize{12}{15}\bfseries\centering}{\chaptertitlename\ \thechapter}{5pt}{}  %\fontsize{<size>}{<line space>}
+\titlespacing{\chapter}{0pt}{5pt}{5pt}
 \titleformat{\section}
-    {\fontsize{12}{15}\bfseries}{\thesection}{1em}{}
+    {\fontsize{12}{15}\bfseries}{\thesection}{5pt}{}
+\titlespacing{\section}{0pt}{5pt}{5pt}
 \titleformat{\subsection}
-    {\fontsize{12}{15}\bfseries}{\thesubsection}{1em}{}
+    {\fontsize{12}{15}\bfseries}{\thesubsection}{5pt}{}
+\titlespacing{\subsection}{0pt}{5pt}{5pt}
 
 \begin{document}
 
-\frontmatter
+\frontmatter % makes page #'s lower case roman
 
 \maketitle
 
-\copyrightpage
+\copyrightpage % copyrighting your dissertation is optional
 
 \begin{abstract}
 \input{abstract}
 \end{abstract}
 
-%\mbox{}\newpage\mbox{} % this will give one blank page.
 % optional section ``Some students choose to personalize their manuscripts
 % with an appropriate quotation or illustration''
 % formatting and placement is up to you.
+\begin{dedication}
+\input{dedication}
+\end{dedication}
 
 % optional but encouraged section ``as a means to recognize and express
 % appreciation to the people who were influential in preparing and completing
@@ -58,56 +84,60 @@
 \input{acknowledgments}
 \end{acknowledgments}
 
-\mbox{}\newpage
 \tableofcontents
 
 \listoffigures
 
-\mbox{}\newpage\mbox{}  % this will give one blank page.
 \listoftables
+
+% preface section is optional
+\begin{preface}
+\input{preface}
+\end{preface}
 
 \mainmatter % starts over page counter and gives regular page numbers
 
-\chapter{Chapter 1 title here}
-\numberwithin{equation}{chapter}
+\chapter{\texorpdfstring{SOME QUOTES}{}}
 \input{chapter1}
 
-%\mbox{}\newpage\mbox{}
-\chapter{Chapter 2 title here}
-\numberwithin{equation}{chapter}
+\chapter{\texorpdfstring{BOB DYLAN}{}}
 \input{chapter2}
 
-%\mbox{}\newpage\mbox{}
-\chapter{Chapter 3 title here}
-\numberwithin{equation}{chapter}
+\chapter{\texorpdfstring{SILLYNESS}{}}
 \input{chapter3}
 
-%\mbox{}\newpage\mbox{}
-\chapter{Chapter 4 title here}
-\numberwithin{equation}{chapter}
+\chapter{\texorpdfstring{HOW TO PROVE IT}{}}
 \input{chapter4}
 
-%\mbox{}\newpage\mbox{}
-\chapter{Chapter 5 title here}
-\numberwithin{equation}{chapter}
+\chapter{\texorpdfstring{OTHERNESS}{}}
 \input{chapter5}
-
 
 \backmatter
 
+% bibliography section: there are two options here. 1. Uncomment the following codes and use \bibitem{} to add more articles. 
 
-\mbox{}\newpage\mbox{}
-% for using bibtex (you may use other bibliography types)
-\begin{thebibliography}{99}
+%\begin{thebibliography}{99}
+%\bibitem{} Zou, C., Liu, Y., Qin, P. and Wang, Z. (2007). Empirical likelihood ratio test for the change-point problem. \textit{Statistics and Probability Letters,} {\textbf{77},} 374-382.
+%\end{thebibliography}
 
-\bibitem{} Alam, K. and Cahoy, D.O. (1999). A test for equality of
-variances. \textit{Journal of Mathematical Sciences, Philippines,} {\bf{2}}(1), 1-19.
+% 2. Using bibtex (you may use other bibliography types). Refer to http://en.wikibooks.org/wiki/LaTeX/Bibliography_Management
+\bibliographystyle{plain}
+\bibliography{reference}
 
-\end{thebibliography}
+
+% appendix section: if you have more than one appendix section, you should use APPENDIX A, APPENDIX B, ....
 \mbox{}\newpage
 \phantomsection
 \appendix
-\chapter{Appendix: Title of appendix}
+\chapter{\texorpdfstring{APPENDIX: SELECTED R PROGRAMS}{APPENDIX}}
 \input{appendix}
-
 \end{document}
+
+
+
+
+
+
+
+
+
