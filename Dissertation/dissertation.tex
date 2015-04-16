@@ -38,7 +38,10 @@
 \usepackage{times}  % Times New Roman
 \usepackage{titlesec} % change the setting for headings
 \usepackage{listings} % allows program codes embeded with original forms
-
+\usepackage{etoolbox}% http://ctan.org/pkg/etoolbox
+\makeatletter
+\patchcmd{\l@chapter}{\bfseries}{}{}{}% \patchcmd{<cmd>}{<search>}{<replace>}{<success>}{<failure>}
+\makeatother
 
 \newtheorem{theorem}{\bf Theorem}[chapter]                  % Allow numbered theorems
 \newtheorem{proposition}[theorem]{\bf Proposition} % Number props with theorems
@@ -47,16 +50,18 @@
 \numberwithin{equation}{chapter}
 \setcounter{equation}{0}
 
-% The first level headings need to be centered and 12 point size
+% The first level headings need to be centered, unbolded and 12 point size
 \titleformat{\chapter}[display]% NEW
-    {\fontsize{12}{15}\bfseries\centering}{\chaptertitlename\ \thechapter}{5pt}{}  %\fontsize{<size>}{<line space>}
+    {\fontsize{12}{15}\centering}{\chaptertitlename\ \thechapter}{5pt}{}  %\fontsize{<size>}{<line space>}
 \titlespacing{\chapter}{0pt}{5pt}{5pt}
 \titleformat{\section}
-    {\fontsize{12}{15}\bfseries}{\thesection}{5pt}{}
+    {\fontsize{12}{15}}{\thesection}{5pt}{}
 \titlespacing{\section}{0pt}{5pt}{5pt}
 \titleformat{\subsection}
-    {\fontsize{12}{15}\bfseries}{\thesubsection}{5pt}{}
+    {\fontsize{12}{15}}{\thesubsection}{5pt}{}
 \titlespacing{\subsection}{0pt}{5pt}{5pt}
+
+
 
 \begin{document}
 
@@ -114,7 +119,7 @@
 
 \backmatter
 
-% bibliography section: there are two options here. 1. Uncomment the following codes and use \bibitem{} to add more articles. 
+% bibliography section: there are two options here. 1. Uncomment the following codes and use \bibitem{} to add more articles.
 
 %\begin{thebibliography}{99}
 %\bibitem{} Zou, C., Liu, Y., Qin, P. and Wang, Z. (2007). Empirical likelihood ratio test for the change-point problem. \textit{Statistics and Probability Letters,} {\textbf{77},} 374-382.
@@ -129,7 +134,7 @@
 \mbox{}\newpage
 \phantomsection
 \appendix
-\chapter{\texorpdfstring{APPENDIX: SELECTED R PROGRAMS}{APPENDIX}}
+\chapter{\texorpdfstring{APPENDIX A \\ SELECTED R PROGRAMS}{APPENDIX}}
 \input{appendix}
 \end{document}
 
