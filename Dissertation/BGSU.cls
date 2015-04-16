@@ -136,6 +136,7 @@
 \usepackage[noTeX]{mmap}
 \pagestyle{\@hstyle}
 
+
 % Below used to set margins
 % 1 inch margins pagenumbers only in 3/4 inch, footnotes included as part
 % of text
@@ -197,7 +198,7 @@
    \begin{center}
     \vspace*\fill
 
-    \textbf{\MakeUppercase{\@title}}
+    \MakeUppercase{\@title}
     \vspace{1.25in}
     % Adjusts spacing for masters thesis
     \ifthenelse{\equal{\@doctype}{Dissertation}}{}
@@ -252,7 +253,7 @@
 \pdfbookmark[1]{ABSTRACT}{abstract}
 \label{abstract}
 \thispagestyle{myheadings}
-\begin{center} \textbf{ABSTRACT}\\ \end{center}
+\begin{center} ABSTRACT\\ \end{center}
   \begin{flushleft}{\@advisor , Advisor\\} \end{flushleft}
 
 }{\clearpage 
@@ -278,7 +279,7 @@
 \newenvironment{acknowledgments}{\clearpage
 \pdfbookmark[1]{ACKNOWLEDGMENTS}{Acknowledgments}
 \thispagestyle{myheadings}
-  \begin{center} \textbf{ACKNOWLEDGMENTS}
+  \begin{center} ACKNOWLEDGMENTS
   \end{center}
 }{\clearpage 
 }
@@ -294,7 +295,7 @@
 \newenvironment{preface}{\clearpage
 \thispagestyle{myheadings}
 \pdfbookmark[1]{PREFACE}{preface}
-\begin{center} \textbf{PREFACE}
+\begin{center} PREFACE
 \end{center}
 }{\clearpage
 }
