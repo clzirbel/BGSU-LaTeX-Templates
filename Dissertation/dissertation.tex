@@ -52,7 +52,7 @@
 
 % The first level headings need to be centered, unbolded and 12 point size
 \titleformat{\chapter}[hang]% NEW
-    {\fontsize{12}{15}\centering}{\chaptertitlename\ \thechapter}{5pt}{}  %\fontsize{<size>}{<line space>}
+    {\fontsize{12}{15}\centering}{\chaptertitlename\ \thechapter}{1em}{}  %\fontsize{<size>}{<line space>}
 \titlespacing{\chapter}{0pt}{5pt}{5pt}
 \titleformat{\section}
     {\fontsize{12}{15}}{\thesection}{5pt}{}
@@ -134,7 +134,7 @@
 \mbox{}\newpage
 \phantomsection
 \appendix
-\chapter{\texorpdfstring{APPENDIX A SELECTED R PROGRAMS}{APPENDIX A}}
+\chapter{\texorpdfstring{APPENDIX A\hspace{1em}SELECTED R PROGRAMS}{APPENDIX A}}
 \input{appendix}
 \end{document}
 
