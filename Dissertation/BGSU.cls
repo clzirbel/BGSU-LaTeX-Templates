@@ -54,7 +54,7 @@
   \def\@hstyle{headings}
 }
 % 
-\def\@doctype{Dissertation}
+\def\@doctype{Dissertation}  %change Dissertation to Thesis for master degree
 \DeclareOption{thesis}{
   \let\@doctype\empty
   \def\@doctype{Thesis}
@@ -225,20 +225,22 @@
     \noindent Committee: \\
 
     \noindent \@advisor , Advisor\\
+    
     % only a doctoral dissertation needs a GFR
     \ifthenelse{\equal{\@doctype}{Dissertation}}{
     \noindent \@gfr ,\\
-     Graduate Faculty Representative\\
-    \noindent \@committee
+     Graduate Faculty Representative\\ \\
+     \noindent \@committee\\
      }
     { %No GFR if not a doctoral dissertation.
     }
-
+    % Adjusts spacing for masters thesis
+    \ifthenelse{\equal{\@doctype}{Thesis}}{
+    \noindent \@committee\\
+  }
     }\end{flushright}
 
-  % Adjusts spacing for masters thesis
-  \ifthenelse{\equal{\@doctype}{Dissertation}}{}
-  {\vspace*{0.8in}}
+
 \end{titlepage}
 
   \clearpage
@@ -348,7 +350,7 @@
                          \refstepcounter{chapter}%
                          \typeout{\@chapapp\space\thechapter.}%
                          \addcontentsline{toc}{chapter}%
-                {\chaptername\space\protect\numberline{\thechapter }#1}%
+                {\chaptername\space\protect\numberline{\thechapter}#1}%
                        \else
                          \addcontentsline{toc}{chapter}{#1}%
                        \fi
