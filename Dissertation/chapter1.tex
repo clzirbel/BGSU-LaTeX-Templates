@@ -23,4 +23,23 @@ Test Statistic & 25.3182 & 24.6395 & 24.6049 & 25.6623 & 27.1320 & 29.3247\\ \hl
 \end{tabular}
 \end{table}
 
-Here is how you cite an article, \cite{forina1991class}.
+\section{Citations}
+
+%If you use the package natbib for citations, here is the example how to cite an article.
+%Many thanks to Dr. Maria Rizzo who worked this section.
+
+To cite an article use cite, citet, or citep.
+
+For ``in text'' citations use citet:  The original result is attributed to \citet{vn28}.
+Refer to \citet{mardia70} for an example.
+Refer to \cite{mardia70} for an example.
+
+For a ``parenthetical citation'' use citep:  The computations were implemented in R \citep{R}
+using bootstrap \citep{dh97,et93}.
+
+When citing a book, it is helpful to mention where to find the result by indicating
+a chapter or a page number or an equation number:  \citet[Ch.~6]{et93} discuss additional results.
+
+
+%If you don't want to use natbib, you should insert comment (\%) in the above part.  
+%Here is the example to cite an article without using natbib package. \cite{forina1991class}
