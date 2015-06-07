@@ -148,10 +148,6 @@
 
 \pagestyle{\@hstyle}
 
-\bibliographystyle{plain}
-
-
-
 % define some variable for the BGSU maketitle.
 % gfr is Graduate Faculty Advisor
 % Committee is the remainder of the committee with
