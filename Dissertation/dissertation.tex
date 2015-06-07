@@ -19,7 +19,7 @@
 \documentclass{BGSU}
 
 % example.tex version 1.3
-% For thesis, open BGSU.cls and change line 57 to \def\@doctype{Thesis} 
+% For thesis, open BGSU.cls and change line 57 to \def\@doctype{Thesis}
 \title{An example dissertation}
 \author{Nate Iverson}
 \degree{Doctor of Philosophy}
@@ -39,6 +39,10 @@
 \usepackage{titlesec} % change the setting for headings
 \usepackage{listings} % allows program codes embeded with original forms
 \usepackage{etoolbox}% http://ctan.org/pkg/etoolbox
+\usepackage[nottoc]{tocbibind}
+\usepackage[longnamesfirst]{natbib} %You need to insert comment (%) if you don't want to use natbib for bibliography
+
+
 \makeatletter
 \patchcmd{\l@chapter}{\bfseries}{}{}{}% \patchcmd{<cmd>}{<search>}{<replace>}{<success>}{<failure>}
 \makeatother
@@ -60,7 +64,9 @@
 \titleformat{\subsection}
     {\fontsize{12}{15}}{\thesubsection}{5pt}{}
 \titlespacing{\subsection}{0pt}{5pt}{5pt}
-
+\titleformat{\subsubsection}
+    {\fontsize{12}{15}}{\thesubsection}{5pt}{}
+\titlespacing{\subsubsection}{0pt}{5pt}{5pt}
 
 
 \begin{document}
@@ -102,33 +108,33 @@
 
 \mainmatter % starts over page counter and gives regular page numbers
 
-\chapter{\texorpdfstring{SOME QUOTES}{}}
+\chapter{\texorpdfstring{SOME QUOTES}{}} %upper case only
 \input{chapter1}
 
-\chapter{\texorpdfstring{BOB DYLAN}{}}
+\chapter{\texorpdfstring{BOB DYLAN}{}} %upper case only
 \input{chapter2}
 
-\chapter{\texorpdfstring{SILLYNESS}{}}
+\chapter{\texorpdfstring{SILLYNESS}{}} %upper case only
 \input{chapter3}
 
-\chapter{\texorpdfstring{HOW TO PROVE IT}{}}
+\chapter{\texorpdfstring{HOW TO PROVE IT}{}} %upper case only
 \input{chapter4}
 
-\chapter{\texorpdfstring{OTHERNESS}{}}
+\chapter{\texorpdfstring{OTHERNESS}{}} %upper case only
 \input{chapter5}
 
 \backmatter
 
-% bibliography section: there are two options here. 1. Uncomment the following codes and use \bibitem{} to add more articles.
-
+%bibliography section: there are two options here. 1. Uncomment the following codes and use \bibitem{} to add more articles.
 %\begin{thebibliography}{99}
-%\bibitem{} Zou, C., Liu, Y., Qin, P. and Wang, Z. (2007). Empirical likelihood ratio test for the change-point problem. \textit{Statistics and Probability Letters,} {\textbf{77},} 374-382.
+%\bibitem{forina1991class} Forina, M., Armanino, C., Leardi, R., and Drava, G. (1991). A class-modelling technique based on potential functions. \textit{Journal of Chemometrics,} {\textbf{5(5)},} 435-453.
 %\end{thebibliography}
 
-% 2. Using bibtex (you may use other bibliography types). Refer to http://en.wikibooks.org/wiki/LaTeX/Bibliography_Management
-\bibliographystyle{plain}
+%2. Using natbib package (you may use other bibliography types). Refer to http://en.wikibooks.org/wiki/LaTeX/Bibliography_Management
+\bibliographystyle{chicago}    %% this one looks best
+%\bibliographystyle{apalike}   %% looks okay for dissertations but it puts quotes around titles in references
+\setcitestyle{authoryear, open={((},close={))}}
 \bibliography{reference}
-
 
 % appendix section: if you have more than one appendix section, you should use APPENDIX A, APPENDIX B, ....
 \mbox{}\newpage
