@@ -121,7 +121,8 @@
 
 % Most Book Options are passed on
 
-\ExecuteOptions{pdftex,letterpaper,raggedbottom}
+%\ExecuteOptions{pdftex,letterpaper,raggedbottom}
+\ExecuteOptions{pdftex,raggedbottom}
 \ProcessOptions
 
 \RequirePackage{ifthen}
@@ -134,7 +135,7 @@
 % 12pt is required 
 
 \LoadClass{book}
-\usepackage[noTeX]{mmap}
+%\usepackage[noTeX]{mmap}    % causes a warning, doesn't seem important
 \pagestyle{\@hstyle}
 
 
@@ -445,6 +446,7 @@
 
 % not quite sure what this does
 \usepackage{etoolbox}  % http://ctan.org/pkg/etoolbox
-\makeatletter
+\makeatletter          % treat "at" symbol as a letter
 \patchcmd{\l@chapter}{\bfseries}{}{}{}% \patchcmd{<cmd>}{<search>}{<replace>}{<success>}{<failure>}
-\makeatother
+\makeatother           % treat "at" symbol as a symbol again
+

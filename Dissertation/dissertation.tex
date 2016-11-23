@@ -21,11 +21,13 @@
 
 % For thesis, open BGSU.cls and change line 57 to \def\@doctype{Thesis}
 
-\usepackage{amsmath}
-\usepackage{amssymb}   % allows the use of AMS symbols like blackboard bold
-\usepackage{graphicx}
-\usepackage{caption}
+% packages amsmath and amsthm are loaded in BGSU.cls file
+
+\usepackage{amsmath}   % load the AMS math package
 \usepackage{amsthm}    % allows AMS definitions for theorems, proofs, etc.
+\usepackage{amssymb}   % allows the use of AMS symbols like blackboard bold
+\usepackage{graphicx}  % for including graphics files and images
+\usepackage{caption}
 \usepackage{epstopdf}
 \usepackage{times}     % Times New Roman (nimbus version)
 \usepackage{listings}  % allows program codes embeded with original forms
@@ -34,14 +36,29 @@
 \usepackage[nottoc,notlof,notlot]{tocbibind} % keep list of figures, tables, out of the table of contents, also keep the table of contents out of the table of contents
 \usepackage[longnamesfirst]{natbib} %You need to insert comment (%) if you don't want to use natbib for bibliography
 
+% Number theorems, lemmas, etc. together with equation numbers
+% This makes things easier to find in the dissertation, a great help to readers
 
-\newtheorem{theorem}{\bf Theorem}[chapter]         % Allow numbered theorems
-\newtheorem{proposition}[theorem]{\bf Proposition} % Number props with theorems
-\newtheorem{remark}[theorem]{\bf Remark}           % Number remarks too
-\newtheorem{lemma}{Lemma}[chapter]
-\numberwithin{equation}{chapter}
-\setcounter{equation}{0}
+\newtheorem{theorem}[equation]{{\bf Theorem}}
+\newtheorem{lemma}[equation]{\bf Lemma}
+\newtheorem{remark}[equation]{\bf Remark}
+\newtheorem{definition}[equation]{\bf Definition}
+\newtheorem{convention}[equation]{\bf Convention}
+\newtheorem{proposition}[equation]{\bf Proposition}
+\newtheorem{notation}[equation]{\bf Notation}
+\newtheorem{corollary}[equation]{\bf Corollary}
+\newtheorem{example}[equation]{{\bf Example}}
 
+% Alternatively, number these using the theorem counter
+%\newtheorem{theorem}{Theorem}[chapter]         % Allow numbered theorems
+%\newtheorem{lemma}[theorem]{\bf Lemma.}
+%\newtheorem{remark}[theorem]{\bf Remark.}
+%\newtheorem{definition}[theorem]{\bf Definition.}
+%\newtheorem{convention}[theorem]{\bf Convention.}
+%\newtheorem{proposition}[theorem]{\bf Proposition.}
+%\newtheorem{notation}[theorem]{\bf Notation.}
+%\newtheorem{corollary}[theorem]{\bf Corollary.}
+%\newtheorem{example}[theorem]{{\bf Example.}}
 
 % Change the text below -----------------------------------------------
 
@@ -81,7 +98,7 @@
 
 \pdfbookmark[section]{\contentsname}{toc}  % put toc in PDF bookmarks
 \tableofcontents
-
+\pagebreak
 \listoffigures
 \pagebreak
 \listoftables
