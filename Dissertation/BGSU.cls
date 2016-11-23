@@ -44,7 +44,7 @@
 %    belongs solely to you and you can do with it what you please.
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{BGSU}[6/03/2011 version 1.1.2]
+\ProvidesClass{BGSU}[11/23/2016 version 1.1.3]
 \def\@BGSUv{1.1.2}
 % Lets us pick the header type by an option
 \def\@hstyle{myheadings}
@@ -53,7 +53,6 @@
   \let\@hstyle\@empty
   \def\@hstyle{headings}
 }
-% 
 
 \def\@doctype{Dissertation}  %change Dissertation to Thesis for master degree
 \DeclareOption{thesis}{
@@ -161,10 +160,11 @@
 \def\gfr#1{\def\@gfr{#1}}
 \def\committee#1{\def\@committee{#1}}
 \def\degree#1{\def\@degree{#1}}
-\def\@keywords{\@author , \@title}
-\def\keywords#1{
-\let\@keywords\empty
-\def\@keywords{#1}}
+\def\keywords#1{\def\@keywords{#1}}
+\def\subject#1{\def\@subject{#1}}
+%\def\keywords#1{
+%\let\@keywords\empty
+%\def\@keywords{#1}}
 
 % make sure to include pdftex in all relevent packages
 % as it will automatically put bookmarks in pdf files generated
@@ -184,10 +184,12 @@
 \hypersetup{%
   pdfauthor=\@author,
   pdftitle=\@title,
-  pdfsubject=\@doctype,
+  pdfsubject=\@subject,
   pdfkeywords=\@keywords,
   pdfcreator={BGSU.cls v\@BGSUv \ by Nate Iverson},
 }
+
+\pdfcatalog{/PageLayout /OneColumn}   % single page continuous scrolling
 
 \begin{titlepage}%
    \singlespacing
@@ -201,7 +203,6 @@
     % Adjusts spacing for masters thesis
     \ifthenelse{\equal{\@doctype}{Dissertation}}{}
     {\vspace*{0.8in}}
-
 
     \@author
     \vspace{1.25in}
@@ -248,16 +249,6 @@
   \RaggedRight}{}
 }
 
-\newenvironment{abstract}{\clearpage
-\pdfbookmark[1]{ABSTRACT}{abstract}
-\label{abstract}
-\thispagestyle{myheadings}
-\begin{center} ABSTRACT\\ \end{center}
-  \begin{flushleft}{\@advisor , Advisor\\} \end{flushleft}
-
-}{\clearpage 
-}
-
 \newcommand{\copyrightpage}{
 %  \pdfbookmark[1]{COPYRIGHT}{copyright}  % not needed in PDF bookmarks
   \thispagestyle{empty}              % use myheadings if you want a page number
@@ -273,6 +264,16 @@
   \end{center}
   \clearpage
   \doublespace
+}
+
+\newenvironment{abstract}{\clearpage
+\pdfbookmark[1]{ABSTRACT}{abstract}
+\label{abstract}
+\thispagestyle{myheadings}
+\begin{center} ABSTRACT\\ \end{center}
+  \begin{flushleft}{\@advisor , Advisor\\} \end{flushleft}
+
+}{\clearpage 
 }
 
 \newenvironment{acknowledgments}{\clearpage
@@ -306,7 +307,7 @@
 \fancyhead{} % clear all header fields
 \fancyfoot{} % clear all footer fields
 \fancyhead[R]{\thepage}
-\fancyhead[L]{\thepage}
+%\fancyhead[L]{\thepage}
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
 \renewcommand{\headheight}{15pt}    % stops LaTeX from complaining
