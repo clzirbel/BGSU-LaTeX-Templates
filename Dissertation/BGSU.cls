@@ -258,7 +258,7 @@
 }
 
 \newcommand{\copyrightpage}{
-  \pdfbookmark[1]{COPYRIGHT}{copyright}
+%  \pdfbookmark[1]{COPYRIGHT}{copyright}  % not needed in PDF bookmarks
   \thispagestyle{empty}
   \vspace*\fill
   \begin{center}

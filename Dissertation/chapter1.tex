@@ -43,3 +43,23 @@ a chapter or a page number or an equation number:  \citet[Ch.~6]{et93} discuss a
 
 %If you don't want to use natbib, you should insert comment (\%) in the above part.  
 %Here is the example to cite an article without using natbib package. \cite{forina1991class}
+
+
+\begin{sidewaysfigure}[p!]
+\centering
+{bf Landscape figure}
+\includegraphics[width=\hsize-1in]{figure.eps}
+\caption[Short label for List of Figures]{ 
+Long label for under the actual figure.}
+\end{sidewaysfigure}
+
+
+
+\begin{landscape}
+\thispagestyle{lscape}
+\pagestyle{lscape}
+  \begin{figure}
+    \includegraphics[width=\linewidth,height=\textheight-1in]{figure.eps}
+    \caption[Short caption for List of Figures]{Long caption to appear under the figure.  Hopefully the figure is not so large that there is no room for the caption, because then the caption might move to a different page, or the text might go into the margin, and that would be bad!}
+  \end{figure}
+\end{landscape}
