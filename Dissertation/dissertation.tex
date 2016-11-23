@@ -33,13 +33,11 @@
 \usepackage{tocloft}
 \usepackage{listings}  % allows program codes embeded with original forms
 \usepackage{etoolbox}  % http://ctan.org/pkg/etoolbox
-\usepackage{bookmark}  % make it possible to add PDF bookmarks
-\usepackage{pdflscape} % allow for landscape environment
+\usepackage{bookmark}  % make it possible to add PDF bookmarks at will
+\usepackage{pdflscape} % make it possible to use landscape environment
 \usepackage{rotating}  % make it possible to use sidewaysfigure
 \usepackage[nottoc,notlof,notlot]{tocbibind} % keep list of figures, tables, out of the table of contents, also keep the table of contents out of the table of contents
 \usepackage[longnamesfirst]{natbib} %You need to insert comment (%) if you don't want to use natbib for bibliography
-
-%\newcommand{\cftchapterdotsep}{\cftdotsep}% Chapters should use dots in ToC
 
 % put dots after chapter names in the table of contents
 \renewcommand{\cfttoctitlefont}{\hfil\mdseries}
@@ -63,9 +61,7 @@
 \renewcommand{\cfttabpagefont}{\mdseries}
 \renewcommand{\cfttableader}{\cftdotfill{\cftdotsep}}
 
-
-
-% move page number on landscape pages
+% make a new page style to move page number on landscape pages
 \usepackage{fancyhdr}
 \fancypagestyle{lscape}{ % define a new page style
 \fancyhf{} % clear all header and footer fields 
@@ -73,18 +69,16 @@
 \fancyfoot[L] {}
 \renewcommand{\headrulewidth}{0pt} 
 \renewcommand{\footrulewidth}{0pt}
+\renewcommand{\headheight}{15pt}    % stops LaTeX from complaining
 %\lhead{\rotatebox{90}{123}}        % pretend it's page 123
 \lhead{\rotatebox{90}{\thepage}}    % page number in "upper left" rotated 90 degrees
 }
-
-
-
 
 \makeatletter
 \patchcmd{\l@chapter}{\bfseries}{}{}{}% \patchcmd{<cmd>}{<search>}{<replace>}{<success>}{<failure>}
 \makeatother
 
-\newtheorem{theorem}{\bf Theorem}[chapter]                  % Allow numbered theorems
+\newtheorem{theorem}{\bf Theorem}[chapter]         % Allow numbered theorems
 \newtheorem{proposition}[theorem]{\bf Proposition} % Number props with theorems
 \newtheorem{remark}[theorem]{\bf Remark}           % Number remarks too
 \newtheorem{lemma}{Lemma}[chapter]
