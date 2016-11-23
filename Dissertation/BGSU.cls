@@ -54,6 +54,7 @@
   \def\@hstyle{headings}
 }
 % 
+
 \def\@doctype{Dissertation}  %change Dissertation to Thesis for master degree
 \DeclareOption{thesis}{
   \let\@doctype\empty
@@ -246,7 +247,6 @@
   \RaggedRight}{}
 }
 
-
 \newenvironment{abstract}{\clearpage
 \pdfbookmark[1]{ABSTRACT}{abstract}
 \label{abstract}
@@ -259,7 +259,7 @@
 
 \newcommand{\copyrightpage}{
 %  \pdfbookmark[1]{COPYRIGHT}{copyright}  % not needed in PDF bookmarks
-  \thispagestyle{empty}
+  \thispagestyle{empty}              % use myheadings if you want a page number
   \vspace*\fill
   \begin{center}
  \begin{minipage}[!b]{\linewidth}
@@ -282,9 +282,9 @@
 }{\clearpage 
 }
 
-
-\newenvironment{dedication}{\thispagestyle{myheadings}
+\newenvironment{dedication}{\clearpage
 \pdfbookmark[1]{DEDICATION}{dedication}
+\thispagestyle{myheadings}
 \begin{center}
 \vspace*{2.5in}
 }{\end{center}\clearpage
@@ -298,9 +298,21 @@
 }{\clearpage
 }
 
+% redefine the plain pagestyle, used by TOC, list of tables
+\usepackage{fancyhdr}
+\fancypagestyle{plain}{%
+\fancyhf{} % clear all header and footer fields
+\fancyhead{} % clear all header fields
+\fancyfoot{} % clear all footer fields
+\fancyhead[R]{\thepage}
+\fancyhead[L]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\renewcommand{\headheight}{15pt}    % stops LaTeX from complaining
+}
 
-% This should fix a problem with the chapters changing the
-% pagestyle
+
+% This should fix a problem with the chapters changing the pagestyle
 
 \renewcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi
                     \thispagestyle{\@hstyle}%
@@ -318,28 +330,45 @@
 % For some reason the above does not work, gone back to old method
 \renewcommand{\contentsname}{TABLE OF CONTENTS}
 \renewcommand{\tableofcontents}{\clearpage
-  \pdfbookmark[1]{\contentsname}{contents}
-  \@makechapterhead{\contentsname}
-  \@starttoc{toc}
+\@makechapterhead{\contentsname}
+\@starttoc{toc}
 }
 
-\renewcommand{\listfigurename}{LIST OF FIGURES}
+% put dots after chapter names in the table of contents
+\usepackage{tocloft}
+\renewcommand{\cfttoctitlefont}{\hfil\mdseries}
+\renewcommand{\cftaftertoctitle}{\hfil}
+\renewcommand{\cftchapfont}{\mdseries}
+\renewcommand{\cftchappagefont}{\mdseries}
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+
+% put List of Figures in capitals, regular size font, list "Figure" and "Page"
+\renewcommand{\listfigurename}{\centerline{LIST OF FIGURES}}
 \renewcommand{\listoffigures}{\clearpage
-\pdfbookmark[1]{\listfigurename}{figures}
 \@makechapterhead{\listfigurename}
 \@starttoc{lof}
 }
+\renewcommand{\figurename}{Figure}
+\renewcommand\cftloftitlefont{\hfil\mdseries}
+\renewcommand{\cftafterloftitle}{\hfil\null\\\hfill{{Figure}\hfill{Page}}\vspace*{-0.4in}}
+\renewcommand{\cftfigfont}{\mdseries}
+\renewcommand{\cftfigpagefont}{\mdseries}
+\renewcommand{\cftfigleader}{\cftdotfill{\cftdotsep}}
 
-\renewcommand{\listtablename}{LIST OF TABLES}
+% put List of Tables in capitals, regular size font, list "Table" and "Page"
+\renewcommand{\listtablename}{\centerline{LIST OF TABLES}}
 \renewcommand{\listoftables}{\clearpage
-\pdfbookmark[1]{\listtablename}{tables}
-\@makechapterhead{
-\listtablename}
+\@makechapterhead{\listtablename}
 \@starttoc{lot}
 }
+\renewcommand\cftlottitlefont{\hfil\mdseries}
+\renewcommand{\cftafterlottitle}{\hfil\null\\\hfill{{Table}\hfill{Page}}\vspace*{-0.4in}}
+\renewcommand{\cfttabfont}{\mdseries}
+\renewcommand{\cfttabpagefont}{\mdseries}
+\renewcommand{\cfttableader}{\cftdotfill{\cftdotsep}}
 
-% This is to ensure that Chapter appears before
-% the toc
+
+% This is to ensure that Chapter appears before the TOC
 \renewcommand{\chaptername}{CHAPTER}
 \def\@chapter[#1]#2{\ifnum \c@secnumdepth >\m@ne
                        \if@mainmatter
@@ -387,7 +416,35 @@
        {\@latex@warning{Empty `thebibliography' environment}}%
       \endlist}
 
+% make a new page style to move page number on landscape pages
+\fancypagestyle{lscape}{ % define a new page style
+\fancyhf{} % clear all header and footer fields 
+\fancyfoot[L]{}
+\fancyfoot[L] {}
+\renewcommand{\headrulewidth}{0pt} 
+\renewcommand{\footrulewidth}{0pt}
+\renewcommand{\headheight}{15pt}    % stops LaTeX from complaining
+%\lhead{\rotatebox{90}{123}}        % pretend it's page 123
+\lhead{\rotatebox{90}{\thepage}}    % page number in "upper left" rotated 90 degrees
+}
 
+% The first level headings need to be centered, unbolded and 12 point size
+\usepackage{titlesec}  % change the setting for headings
+\titleformat{\chapter}[hang]% NEW
+    {\fontsize{12}{15}\centering}{\chaptertitlename\ \thechapter}{1em}{}  %\fontsize{<size>}{<line space>}
+\titlespacing{\chapter}{0pt}{5pt}{5pt}
+\titleformat{\section}
+    {\fontsize{12}{15}}{\thesection}{5pt}{}
+\titlespacing{\section}{0pt}{5pt}{5pt}
+\titleformat{\subsection}
+    {\fontsize{12}{15}}{\thesubsection}{5pt}{}
+\titlespacing{\subsection}{0pt}{5pt}{5pt}
+\titleformat{\subsubsection}
+    {\fontsize{12}{15}}{\thesubsection}{5pt}{}
+\titlespacing{\subsubsection}{0pt}{5pt}{5pt}
 
-
-
+% not quite sure what this does
+\usepackage{etoolbox}  % http://ctan.org/pkg/etoolbox
+\makeatletter
+\patchcmd{\l@chapter}{\bfseries}{}{}{}% \patchcmd{<cmd>}{<search>}{<replace>}{<success>}{<failure>}
+\makeatother

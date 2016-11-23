@@ -16,11 +16,10 @@
 %    Note that this only applies to the example and template files and BGSU.cls
 %    itself. Any actual document content (such as your thesis or dissertation text)
 %    belongs solely to you and you can do with it what you please.
+
 \documentclass{BGSU}
 
-% example.tex version 1.3
 % For thesis, open BGSU.cls and change line 57 to \def\@doctype{Thesis}
-
 
 \usepackage{amsmath}
 \usepackage{amssymb}   % allows the use of AMS symbols like blackboard bold
@@ -29,54 +28,12 @@
 \usepackage{amsthm}    % allows AMS definitions for theorems, proofs, etc.
 \usepackage{epstopdf}
 \usepackage{times}     % Times New Roman (nimbus version)
-\usepackage{titlesec}  % change the setting for headings
-\usepackage{tocloft}
 \usepackage{listings}  % allows program codes embeded with original forms
-\usepackage{etoolbox}  % http://ctan.org/pkg/etoolbox
 \usepackage{bookmark}  % make it possible to add PDF bookmarks at will
 \usepackage{pdflscape} % make it possible to use landscape environment
-\usepackage{rotating}  % make it possible to use sidewaysfigure
 \usepackage[nottoc,notlof,notlot]{tocbibind} % keep list of figures, tables, out of the table of contents, also keep the table of contents out of the table of contents
 \usepackage[longnamesfirst]{natbib} %You need to insert comment (%) if you don't want to use natbib for bibliography
 
-% put dots after chapter names in the table of contents
-\renewcommand{\cfttoctitlefont}{\hfil\mdseries}
-\renewcommand{\cftaftertoctitle}{\hfil}
-\renewcommand{\cftchapfont}{\mdseries}
-\renewcommand{\cftchappagefont}{\mdseries}
-\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
-
-% put List of Figures in capitals, regular size font
-\renewcommand{\figurename}{Figure}
-\renewcommand\cftloftitlefont{\hfil\mdseries}
-\renewcommand{\cftafterloftitle}{\hfil}
-\renewcommand{\cftfigfont}{\mdseries}
-\renewcommand{\cftfigpagefont}{\mdseries}
-\renewcommand{\cftfigleader}{\cftdotfill{\cftdotsep}}
-
-% put List of Tables in capitals, regular size font
-\renewcommand\cftlottitlefont{\hfil\mdseries}
-\renewcommand{\cftafterlottitle}{\hfil}
-\renewcommand{\cfttabfont}{\mdseries}
-\renewcommand{\cfttabpagefont}{\mdseries}
-\renewcommand{\cfttableader}{\cftdotfill{\cftdotsep}}
-
-% make a new page style to move page number on landscape pages
-\usepackage{fancyhdr}
-\fancypagestyle{lscape}{ % define a new page style
-\fancyhf{} % clear all header and footer fields 
-\fancyfoot[L]{}
-\fancyfoot[L] {}
-\renewcommand{\headrulewidth}{0pt} 
-\renewcommand{\footrulewidth}{0pt}
-\renewcommand{\headheight}{15pt}    % stops LaTeX from complaining
-%\lhead{\rotatebox{90}{123}}        % pretend it's page 123
-\lhead{\rotatebox{90}{\thepage}}    % page number in "upper left" rotated 90 degrees
-}
-
-\makeatletter
-\patchcmd{\l@chapter}{\bfseries}{}{}{}% \patchcmd{<cmd>}{<search>}{<replace>}{<success>}{<failure>}
-\makeatother
 
 \newtheorem{theorem}{\bf Theorem}[chapter]         % Allow numbered theorems
 \newtheorem{proposition}[theorem]{\bf Proposition} % Number props with theorems
@@ -85,19 +42,6 @@
 \numberwithin{equation}{chapter}
 \setcounter{equation}{0}
 
-% The first level headings need to be centered, unbolded and 12 point size
-\titleformat{\chapter}[hang]% NEW
-    {\fontsize{12}{15}\centering}{\chaptertitlename\ \thechapter}{1em}{}  %\fontsize{<size>}{<line space>}
-\titlespacing{\chapter}{0pt}{5pt}{5pt}
-\titleformat{\section}
-    {\fontsize{12}{15}}{\thesection}{5pt}{}
-\titlespacing{\section}{0pt}{5pt}{5pt}
-\titleformat{\subsection}
-    {\fontsize{12}{15}}{\thesubsection}{5pt}{}
-\titlespacing{\subsection}{0pt}{5pt}{5pt}
-\titleformat{\subsubsection}
-    {\fontsize{12}{15}}{\thesubsection}{5pt}{}
-\titlespacing{\subsubsection}{0pt}{5pt}{5pt}
 
 % Change the text below -----------------------------------------------
 
@@ -108,8 +52,6 @@
 \advisor{Corneliu Hoffman}
 \gfr{Darth Vader} % graduate faculty representative
 \committee{Kit Chan \\ \\ Warren McGovern}
-
-
 
 \begin{document}
 
@@ -151,19 +93,10 @@
 
 \mainmatter % starts over page counter and gives regular page numbers
 
-\chapter{\texorpdfstring{SOME QUOTES}{}} %upper case only
 \input{chapter1}
-
-\chapter{\texorpdfstring{BOB DYLAN}{}} %upper case only
 \input{chapter2}
-
-\chapter{\texorpdfstring{SILLYNESS}{}} %upper case only
 \input{chapter3}
-
-\chapter{\texorpdfstring{HOW TO PROVE IT}{}} %upper case only
 \input{chapter4}
-
-\chapter{\texorpdfstring{OTHERNESS}{}} %upper case only
 \input{chapter5}
 
 \backmatter
@@ -183,6 +116,5 @@
 \mbox{}\newpage
 \phantomsection
 \appendix
-\chapter{\texorpdfstring{APPENDIX A\hspace{1em}SELECTED R PROGRAMS}{APPENDIX A}}
 \input{appendix}
 \end{document}
