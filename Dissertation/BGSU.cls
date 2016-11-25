@@ -328,18 +328,19 @@
 % \renewcommand{\chapter}[1]{
 %   \Oldchapter{#1}{#2}{#3} \thispagestyle{empty}
 %}
-
 % For some reason the above does not work, gone back to old method
+
+% Build the table of contents with the right name
 \renewcommand{\contentsname}{TABLE OF CONTENTS}
 \renewcommand{\tableofcontents}{\clearpage
 \@makechapterhead{\contentsname}
 \@starttoc{toc}
 }
 
-% put dots after chapter names in the table of contents
+% put dots after chapter names in the table of contents, "Page" above page #'s
 \usepackage{tocloft}
-\renewcommand{\cfttoctitlefont}{\hfil\mdseries}
-\renewcommand{\cftaftertoctitle}{\hfil}
+\renewcommand{\cfttoctitlefont}{\hfill\mdseries}    % important for centering
+\renewcommand{\cftaftertoctitle}{\hfill\hfill\\{\mbox{~}\hfill{Page}}\vspace*{-0.7in}}
 \renewcommand{\cftchapfont}{\mdseries}
 \renewcommand{\cftchappagefont}{\mdseries}
 \renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
@@ -352,7 +353,7 @@
 }
 \renewcommand{\figurename}{Figure}
 \renewcommand\cftloftitlefont{\hfil\mdseries}
-\renewcommand{\cftafterloftitle}{\hfil\null\\\hfill{{Figure}\hfill{Page}}\vspace*{-0.4in}}
+\renewcommand{\cftafterloftitle}{\hfil\null\\\hfill{{Figure}\hfill{Page}}\vspace*{-0.5in}}
 \renewcommand{\cftfigfont}{\mdseries}
 \renewcommand{\cftfigpagefont}{\mdseries}
 \renewcommand{\cftfigleader}{\cftdotfill{\cftdotsep}}
@@ -364,7 +365,7 @@
 \@starttoc{lot}
 }
 \renewcommand\cftlottitlefont{\hfil\mdseries}
-\renewcommand{\cftafterlottitle}{\hfil\null\\\hfill{{Table}\hfill{Page}}\vspace*{-0.4in}}
+\renewcommand{\cftafterlottitle}{\hfil\null\\\hfill{{Table}\hfill{Page}}\vspace*{-0.5in}}
 \renewcommand{\cfttabfont}{\mdseries}
 \renewcommand{\cfttabpagefont}{\mdseries}
 \renewcommand{\cfttableader}{\cftdotfill{\cftdotsep}}
@@ -422,12 +423,11 @@
 \fancypagestyle{lscape}{ % define a new page style
 \fancyhf{} % clear all header and footer fields 
 \fancyfoot[L]{}
-\fancyfoot[L] {}
 \renewcommand{\headrulewidth}{0pt} 
 \renewcommand{\footrulewidth}{0pt}
 \renewcommand{\headheight}{15pt}    % stops LaTeX from complaining
 %\lhead{\rotatebox{90}{123}}        % pretend it's page 123
-\lhead{\rotatebox{90}{\thepage}}    % page number in "upper left" rotated 90 degrees
+\lhead{\rotatebox{90}{\hspace*{-0.0in}\thepage}}    % page number in "upper left" rotated 90 degrees; use \hspace*{-0.5in} if you need to move it left
 }
 
 % The first level headings need to be centered, unbolded and 12 point size
