@@ -28,7 +28,13 @@
 \usepackage{amssymb}   % allows the use of AMS symbols like blackboard bold
 \usepackage{graphicx}  % for including graphics files and images
 \usepackage{caption}
+\captionsetup[table]{labelsep=space}
+\captionsetup[figure]{labelsep=space}
 \usepackage{epstopdf}
+\usepackage{tocloft}
+\setlength{\cftbeforetoctitleskip}{-25pt}
+\setlength{\cftbeforeloftitleskip}{-25pt}
+\setlength{\cftbeforelottitleskip}{-25pt}
 \usepackage{times}     % Times New Roman (nimbus version)
 \usepackage{listings}  % allows program codes embeded with original forms
 \usepackage{bookmark}  % make it possible to add PDF bookmarks at will
@@ -101,8 +107,10 @@
 \pdfbookmark[section]{\contentsname}{toc}  % put toc in PDF bookmarks
 \tableofcontents
 \pagebreak
+\pdfbookmark[section]{LIST OF FIGURES}{figures}
 \listoffigures
 \pagebreak
+\pdfbookmark[section]{LIST OF TABLES}{tables}
 \listoftables
 
 % preface section is optional
