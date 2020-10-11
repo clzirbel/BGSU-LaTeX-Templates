@@ -139,9 +139,11 @@
 \bibliography{reference}
 % Make sure to run ``bibtex dissertation'' to create certain internal BibTeX files
 
-% appendix section: if you have more than one appendix section, you should use APPENDIX A, APPENDIX B, ....
+% appendix section: if you have more than one appendix section, you should label them as APPENDIX A, APPENDIX B, ....
 \mbox{}\newpage
 \phantomsection
 \appendix
 \input{chapters/appendix}
+\phantomsection % this helps the links in the Table of Contents actually get you to Appendix B; use this between every appendix if you have more than two appendices.
+\input{chapters/appendixB}
 \end{document}
