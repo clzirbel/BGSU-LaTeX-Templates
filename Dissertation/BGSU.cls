@@ -142,7 +142,7 @@
 % 1 inch margins pagenumbers only in 3/4 inch, footnotes included as part
 % of text
 \usepackage{geometry}
-\geometry{margin=1.0in, nofoot, headsep=6pt}% options appended.
+\geometry{margin=1.0in, nofoot, headsep=6pt, footskip=5pt}% options appended.
 % double spacing
 \RequirePackage{setspace}
 \doublespacing
