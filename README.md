@@ -2,7 +2,7 @@
 LaTeX templates for theses and dissertations at Bowling Green State University
 See https://www.bgsu.edu/graduate/thesis-and-dissertations/thesis-dissertation-handbook.html for the requirements.
 
-Dr. Maria Rizzo has a version of the template where the various files are organized into different folders.  See https://github.com/mariarizzo/BGthesis
+Nate Iverson created the first version of this template.  Ying-Ju Chen, John Haman, and Maria Rizzo also made contributions.  Dr. Rizzo also maintains a version of the template, see https://github.com/mariarizzo/BGthesis
 
 The file BGSU.cls contains pretty much all of the BGSU-specific formatting commands.  Hopefully you will not need to edit it.
 The file dissertation.tex is the central file that you would run with LaTeX.
