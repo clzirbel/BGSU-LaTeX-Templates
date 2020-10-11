@@ -61,15 +61,18 @@ It's not hard to incorporate very wide figures by making a landscape page in the
   \end{figure}
 \end{landscape}
 
-\section{Definitions, Theorems, and proofs}
-This section illustrates the normal appearance of definitions, theorems, proofs, and similar items in mathematical work.
-Note that these are not listed in a separate list, unlike figures and tables.
-All numbered items are counted using the same counter, including equations, theorems, lemmas, etc.
-This is not a universal convention in mathematics, but it is super helpful for your readers to be able to find where a theorem or result is.
-Also, since we can't have running headers indicating the chapter or section number, these numbers are helpful to indicate to the reader where they are in the document.
+\section{Numbering definitions, theorems, and proofs}
+This section illustrates the appearance of definitions, theorems, proofs, and similar items in mathematical work.
+When it says Definition 1.1, that means that it is the first definition in Chapter 1, then Definition 1.2 is the second definition in Chapter 1.
+The section number is not part of the numbering.
 
 \begin{definition}
 We say that $\lim_{x \to a} f(x) = L$ if for all $\varepsilon > 0$, there exists $\delta > 0$ such that for all $x \in (a-\delta,a+\delta),$ we have $|f(x) - L| < \varepsilon$.
+\end{definition}
+
+\begin{definition}
+An integer $n$ is even if $n=2k$ for some integer $k$.
+Thus, for example, the number $0$ is even because $0=2\cdot 0$.
 \end{definition}
 
 \begin{theorem}[Pythagorean Theorem]
@@ -92,6 +95,8 @@ The proof of this case is beyond the scope of this template.
 
 \section{Additional numbered results}
 
+Now we are starting a new section of Chapter 1.
+
 \begin{lemma}
 A lemma is a short, technical result that is needed in the proof of a theorem.
 \end{lemma}
@@ -109,3 +114,10 @@ A proposition is like a little theorem.
 A corollary is an easy result that follows a theorem.
 \end{corollary}
 
+\begin{definition}
+An integer $n$ is odd if $n=2k+1$ for some integer $k$.
+\end{definition}
+
+Note that that was the third definition in Chapter 1, which appears in Section 1.6.
+An alternative way to number is to number each equation, definition, theorem, etc. using the same counter, so that the numbers increase throughout the chapter.
+You can get numbering like that by changing certain lines in the preamble of the file dissertation.tex, as is explained there.
