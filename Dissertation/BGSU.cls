@@ -256,7 +256,7 @@
   \begin{center}
  \begin{minipage}[!b]{\linewidth}
     \begin{center}
-       Copyright \copyright \@date\\
+       Copyright \copyright~\@date\\
        \@author \\
        All rights reserved
     \end{center}

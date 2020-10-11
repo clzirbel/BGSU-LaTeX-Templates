@@ -89,21 +89,21 @@
 \copyrightpage % copyrighting your dissertation is optional
 
 \begin{abstract}
-\input{abstract}
+\input{frontmatter/abstract}
 \end{abstract}
 
 % optional section ``Some students choose to personalize their manuscripts
 % with an appropriate quotation or illustration''
 % formatting and placement is up to you.
 \begin{dedication}
-\input{dedication}
+\input{frontmatter/dedication}
 \end{dedication}
 
 % optional but encouraged section ``as a means to recognize and express
 % appreciation to the people who were influential in preparing and completing
 % the manuscript''
 \begin{acknowledgments}
-\input{acknowledgments}
+\input{frontmatter/acknowledgments}
 \end{acknowledgments}
 
 \pdfbookmark[section]{\contentsname}{toc}  % put toc in PDF bookmarks
@@ -117,16 +117,16 @@
 
 % preface section is optional
 \begin{preface}
-\input{preface}
+\input{frontmatter/preface}
 \end{preface}
 
 \mainmatter % starts over page counter and gives regular page numbers
 
-\input{chapter1}
-\input{chapter2}
-\input{chapter3}
-\input{chapter4}
-\input{chapter5}
+\input{chapters/chapter1}
+\input{chapters/chapter2}
+\input{chapters/chapter3}
+\input{chapters/chapter4}
+\input{chapters/chapter5}
 
 \backmatter
 
@@ -139,11 +139,12 @@
 \bibliographystyle{chicago}    %% this one looks best
 %\bibliographystyle{apalike}   %% looks okay for dissertations but it puts quotes around titles in references
 \setcitestyle{authoryear, open={((},close={))}}
+% use the file reference.bib
 \bibliography{reference}
 
 % appendix section: if you have more than one appendix section, you should use APPENDIX A, APPENDIX B, ....
 \mbox{}\newpage
 \phantomsection
 \appendix
-\input{appendix}
+\input{chapters/appendix}
 \end{document}
