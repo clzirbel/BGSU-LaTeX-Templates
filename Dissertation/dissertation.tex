@@ -40,7 +40,7 @@
 \usepackage{bookmark}  % make it possible to add PDF bookmarks at will
 \usepackage{pdflscape} % make it possible to use landscape environment
 \usepackage[nottoc,notlof,notlot]{tocbibind} % keep list of figures, tables, out of the table of contents, also keep the table of contents out of the table of contents
-\usepackage[longnamesfirst]{natbib} %You need to insert comment (%) if you don't want to use natbib for bibliography
+\usepackage[longnamesfirst]{natbib} % natbib helps you customize how references appear
 
 
 % The lines below use separate counters for each theorem, each lemma, each equation, etc.  The counters are re-set at the beginning of each chapter.
@@ -130,17 +130,14 @@
 
 \backmatter
 
-%bibliography section: there are two options here. 1. Uncomment the following codes and use \bibitem{} to add more articles.
-%\begin{thebibliography}{99}
-%\bibitem{forina1991class} Forina, M., Armanino, C., Leardi, R., and Drava, G. (1991). A class-modelling technique based on potential functions. \textit{Journal of Chemometrics,} {\textbf{5(5)},} 435-453.
-%\end{thebibliography}
-
-%2. Using natbib package (you may use other bibliography types). Refer to http://en.wikibooks.org/wiki/LaTeX/Bibliography_Management
+% Customize the appearance of references
+% using natbib package (you may use other bibliography types). Refer to http://en.wikibooks.org/wiki/LaTeX/Bibliography_Management
 \bibliographystyle{chicago}    %% this one looks best
 %\bibliographystyle{apalike}   %% looks okay for dissertations but it puts quotes around titles in references
 \setcitestyle{authoryear, open={((},close={))}}
 % use the file reference.bib
 \bibliography{reference}
+% Make sure to run ``bibtex dissertation'' to create certain internal BibTeX files
 
 % appendix section: if you have more than one appendix section, you should use APPENDIX A, APPENDIX B, ....
 \mbox{}\newpage
