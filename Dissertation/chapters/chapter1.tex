@@ -78,7 +78,7 @@ Thus, for example, the number $0$ is even because $0=2\cdot 0$.
 
 \begin{theorem}[Pythagorean Theorem]
 For a right triangle with edge lengths $a$, $b$, and $c$ where $c$ is the length of the hypotenuse, 
-\begin{equation}
+\begin{equation} \label{PythagoreanTheorem}
     a^2 + b^2 = c^2
 \end{equation}
 \end{theorem}
@@ -95,15 +95,17 @@ The proof of this case is beyond the scope of this template.
 \end{proof}
 
 \section{Additional numbered results}
+\label{AdditionalNumberedResults}
 
 Now we are starting a new section of Chapter 1.
+We can still refer back to Equation \ref{PythagoreanTheorem}.
 
 \begin{lemma}
 A lemma is a short, technical result that is needed in the proof of a theorem.
 \end{lemma}
 
 Note how equations are numbered.
-\begin{equation}
+\begin{equation} \label{squarebinomial}
     (a+b)^2 = a^2 + 2 ab + b^2
 \end{equation}
 
@@ -122,3 +124,7 @@ An integer $n$ is odd if $n=2k+1$ for some integer $k$.
 Note that that was the third definition in Chapter 1, which appears in Section 1.6.
 An alternative way to number is to number each equation, definition, theorem, etc. using the same counter, so that the numbers increase throughout the chapter.
 You can get numbering like that by changing certain lines in the preamble of the file dissertation.tex, as is explained there.
+
+Once again, we can refer back to Equation \ref{PythagoreanTheorem}.
+We can also refer to Equation \ref{squarebinomial}.
+
