@@ -4,11 +4,53 @@ See https://www.bgsu.edu/graduate/thesis-and-dissertations/thesis-dissertation-h
 
 Nate Iverson created the first version of this template.  Ying-Ju Chen, John Haman, and Maria Rizzo also made contributions.  Dr. Rizzo also maintains a version of the template, see https://github.com/mariarizzo/BGthesis
 
-The file BGSU.cls contains pretty much all of the BGSU-specific formatting commands.  Hopefully you will not need to edit it.
+The file BGSU.cls contains pretty much all of the BGSU-specific formatting commands.
+Hopefully you will not need to edit it.
 The file dissertation.tex is the central file that you would run with LaTeX.
 There are separate files for the abstract, chapters, appendix, references, and other things.
-If you are writing a thesis, there is one small change to make in dissertation.tex.  You might want to rename that file thesis.tex.  You also need to make one change in BGSU.cls; search for the word Thesis.
+If you are writing a thesis, there is one small change to make in dissertation.tex.
+You might want to rename that file thesis.tex.
+You also need to make one change in BGSU.cls; search for the word Thesis.
 
-PDFLaTeX should be able to set the document properties correctly, but after producing a PDF, you should check that the PDF document properties are set correctly.
-You can check them in Adobe Reader, but if you have to change them, it may be easiest to use Adobe Acrobat.  Follow the instructions at http://www.bgsu.edu/content/dam/BGSU/graduate-college/doc/document-properties.doc (note, the link may be broken, also look at http://www.bgsu.edu/graduate/thesis-and-dissertations/converting-your-document-to-pdf.html )
-Also note that fonts must be embedded.
+After producing a PDF, you should check that the PDF document properties are set correctly.
+You can check them in Adobe Reader, but if you have to change them, it may be easiest to use Adobe Acrobat.
+Follow the instructions at http://www.bgsu.edu/graduate/thesis-and-dissertations/converting-your-document-to-pdf.html
+Also note that fonts must be embedded; the instructions above tell how to do that.
+One specific step:
+
+* In Adobe Acrobat: File, Properties, Keywords, remove the double quotes from the text
+* In Adobe Acrobat: File, Properties, Initial View, Show, Document Title to get the title bar to show the title of the work instead of the filename
+
+In Fall 2021, additional accessibility requirements were being checked, and it becomes more difficult to get LaTeX to accomplish all that is needed.
+Here are some suggestions based on the experiences of a student who worked on this.
+
+A potential problem is that hyperlinks within the document are not tagged as being hyperlinks, so a visually impaired person might not know that they are hyperlinks.
+
+* A last ditch approach is to remove all hyperlinks using Adobe Acrobat and following: Print Production, Preflight, Flatten annotations and form field.
+This wipes the hyperlinks that LaTeX provided.
+
+Additional suggestions:
+
+* Work closely with the BGSU Thesis & Dissertation Services Office
+* Use the Adobe Acrobat Pro accessibility checker at (https://helpx.adobe.com/acrobat/using/create-verify-pdf-accessibility.html)  Basic instructions: Tools, scroll down to Accessibility, Accessibility Check, Start Checking, Accessibility Report, read the results in the left pane.
+* Consider downloading and running the PDF Accessibility Checker from (https://pdfua.foundation/en) on your final PDF.
+
+This online question and answer site has many suggestions that may be helpful:
+https://tex.stackexchange.com/questions/545903/creating-a-pdf-a-pdf-x-and-pdf-ua-multistandard-compliant-thesis-or-paper
+
+It is important that equations can be read out loud with a screen reader.
+As of 2/20/2022, pdfLaTeX produced a version that could be read by the Adobe Reader Read Out Loud feature, so the instructions below do not seem to be necessary, but they are kept here in case they become necessary.
+When you are done writing your thesis or dissertation, re-run LaTeX on it using the LaTeX axessibility package following these steps:
+
+* Edit your main LaTeX file dissertation.tex or thesis.tex to comment out the \documentclass{BGSU} line and uncomment the lines that use \documentclass{BGSUaccessible}
+* Process your document with LuaLaTeX so that a screen reader can pronounce the content of your math equations.
+If you are running LaTeX on your own computer, this may require installing several packages.
+On overleaf, upload the project, then click the Menu and set the compiler to LuaLaTeX.
+This may be the easiest way to get it to work.
+* Check that equations can be read out loud using Adobe Reader.
+You may have to first open Adobe Reader, then Edit, Preferences, Security (Enhanced), uncheck Enable Protected Mode at startup.
+Then re-start Adobe Reader.
+Then open your PDF with Adobe Reader and do:  View, Read Out Loud, Activate Read Out Loud, View, Read Out Loud, Read This Page Only.
+Note:  The spoken version of equations may still not work very well.
+Hopefully the axessibility package will improve over time.
+
