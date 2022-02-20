@@ -8,30 +8,30 @@ The file BGSU.cls contains pretty much all of the BGSU-specific formatting comma
 Hopefully you will not need to edit it.
 The file dissertation.tex is the central file that you would run with LaTeX.
 There are separate files for the abstract, chapters, appendix, references, and other things.
-If you are writing a thesis, there is one small change to make in dissertation.tex.
-You might want to rename that file thesis.tex.
-You also need to make one change in BGSU.cls; search for the word Thesis.
+If you are writing a thesis, change line 57 of BGSU.cls to \def\@doctype{Thesis}.
+You may also want to rename dissertation.tex to be thesis.tex.
 
 After producing a PDF, you should check that the PDF document properties are set correctly.
 You can check them in Adobe Reader, but if you have to change them, it may be easiest to use Adobe Acrobat.
 Follow the instructions at http://www.bgsu.edu/graduate/thesis-and-dissertations/converting-your-document-to-pdf.html
 Also note that fonts must be embedded; the instructions above tell how to do that.
-One specific step:
+Some specific steps:
 
 * In Adobe Acrobat: File, Properties, Keywords, remove the double quotes from the text
 * In Adobe Acrobat: File, Properties, Initial View, Show, Document Title to get the title bar to show the title of the work instead of the filename
 
-In Fall 2021, additional accessibility requirements were being checked, and it becomes more difficult to get LaTeX to accomplish all that is needed.
+In Fall 2021, additional accessibility requirements were being checked by the BGSU Thesis & Dissertation Services Office, and it became more difficult to get LaTeX to accomplish all that is needed.
 Here are some suggestions based on the experiences of a student who worked on this.
+First, work closely with the BGSU Thesis & Dissertation Services Office.
 
 A potential problem is that hyperlinks within the document are not tagged as being hyperlinks, so a visually impaired person might not know that they are hyperlinks.
 
+* Hopefully we will find a good way to deal with this.
 * A last ditch approach is to remove all hyperlinks using Adobe Acrobat and following: Print Production, Preflight, Flatten annotations and form field.
 This wipes the hyperlinks that LaTeX provided.
 
 Additional suggestions:
 
-* Work closely with the BGSU Thesis & Dissertation Services Office
 * Use the Adobe Acrobat Pro accessibility checker at (https://helpx.adobe.com/acrobat/using/create-verify-pdf-accessibility.html)  Basic instructions: Tools, scroll down to Accessibility, Accessibility Check, Start Checking, Accessibility Report, read the results in the left pane.
 * Consider downloading and running the PDF Accessibility Checker from (https://pdfua.foundation/en) on your final PDF.
 
