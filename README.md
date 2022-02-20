@@ -14,15 +14,15 @@ You may also want to rename dissertation.tex to be thesis.tex.
 After producing a PDF, you should check that the PDF document properties are set correctly.
 You can check them in Adobe Reader, but if you have to change them, it may be easiest to use Adobe Acrobat.
 Follow the instructions at http://www.bgsu.edu/graduate/thesis-and-dissertations/converting-your-document-to-pdf.html
-Also note that fonts must be embedded; the instructions above tell how to do that.
+Note that fonts must be embedded; the instructions above tell how to do that.
 Some specific steps:
 
 * In Adobe Acrobat: File, Properties, Keywords, remove the double quotes from the text
 * In Adobe Acrobat: File, Properties, Initial View, Show, Document Title to get the title bar to show the title of the work instead of the filename
 
 In Fall 2021, additional accessibility requirements were being checked by the BGSU Thesis & Dissertation Services Office, and it became more difficult to get LaTeX to accomplish all that is needed.
+Work closely with the people in that office to get your document in shape.
 Here are some suggestions based on the experiences of a student who worked on this.
-First, work closely with the BGSU Thesis & Dissertation Services Office.
 
 A potential problem is that hyperlinks within the document are not tagged as being hyperlinks, so a visually impaired person might not know that they are hyperlinks.
 
