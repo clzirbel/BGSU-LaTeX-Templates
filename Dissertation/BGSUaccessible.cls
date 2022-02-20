@@ -48,7 +48,7 @@
 %    belongs solely to you and you can do with it what you please.
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{BGSU}[11/23/2016 version 1.1.3]
+\ProvidesClass{BGSUaccessible}
 \def\@BGSUv{1.1.2}
 % Lets us pick the header type by an option
 \def\@hstyle{myheadings}
