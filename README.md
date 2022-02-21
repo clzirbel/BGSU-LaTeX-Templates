@@ -40,13 +40,6 @@ Hopefully we will find a good way to deal with this, but for now:
 This wipes the hyperlinks that LaTeX provided, making the document compliant.
 You can submit the "flat" version to OhioLink as the official dissertation and the version with hyperlinks as a Supplemental File for OhioLink.
 
-Additional suggestions:
-
-* Consider downloading and running the PDF Accessibility Checker from (https://pdfua.foundation/en) on your final PDF.
-
-This online question and answer site has many suggestions that may be helpful:
-https://tex.stackexchange.com/questions/545903/creating-a-pdf-a-pdf-x-and-pdf-ua-multistandard-compliant-thesis-or-paper
-
 # Notes for possible future use
 
 It is important that equations can be read out loud with a screen reader.
@@ -65,4 +58,3 @@ Then re-start Adobe Reader.
 Then open your PDF with Adobe Reader and do:  View, Read Out Loud, Activate Read Out Loud, View, Read Out Loud, Read This Page Only.
 Note:  The spoken version of equations may still not work very well.
 Hopefully the axessibility package will improve over time.
-
