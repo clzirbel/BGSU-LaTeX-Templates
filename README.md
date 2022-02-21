@@ -23,11 +23,13 @@ You can also read this page about the Accessibility Check: https://helpx.adobe.c
 * One step in the Accessibility Check is to set alternate text for each figure (image) and table.
 Follow the instructions at the link above concerning number of characters and content of the alternate text.
 I don't know how to add alt text in the LaTeX source code, so I would recommend keeping a separate file with alt text for each image, which you can copy and paste in one step at the end.
+(I tried the accessibility package but was not able to get it to work.)
 * The link above explains how to check the reading order on each page of your document.
 Level 1 headings need to be marked.
 Essentially you need to scroll through your document, drag a box around the heading at the beginning of each chapter, and click Heading 1.
 Also do this for the Abstract, Table of Contents, List of Figures, Chapters, Bibliography, Appendices.
 It should also be done for the headings of Acknowledgments, List of Tables, Preface, but these may be recognized as tables and so cannot be marked as Heading 1.
+You do not need to mark section headings (Section 1.1, 1.2, etc.) or subsection headings.
 You can see what type each element is by checking Structure types.
 Also look for any text that is not in a gray box or is not in order on the page.
 
@@ -45,7 +47,7 @@ Additional suggestions:
 This online question and answer site has many suggestions that may be helpful:
 https://tex.stackexchange.com/questions/545903/creating-a-pdf-a-pdf-x-and-pdf-ua-multistandard-compliant-thesis-or-paper
 
-# Additional notes for possible future use
+# Notes for possible future use
 
 It is important that equations can be read out loud with a screen reader.
 As of 2/20/2022, pdfLaTeX produced a version that could be read by the Adobe Reader Read Out Loud feature.
