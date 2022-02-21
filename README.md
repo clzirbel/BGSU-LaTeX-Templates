@@ -29,6 +29,7 @@ A potential problem is that hyperlinks within the document are not tagged as bei
 * Hopefully we will find a good way to deal with this.
 * A last ditch approach is to remove all hyperlinks using Adobe Acrobat and following: Print Production, Preflight, Flatten annotations and form field.
 This wipes the hyperlinks that LaTeX provided.
+Submit the "flat" version as the official dissertation and the version with hyperlinks as a Supplemental File for OhioLink.
 
 Additional suggestions:
 
