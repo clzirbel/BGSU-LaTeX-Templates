@@ -11,37 +11,46 @@ There are separate files for the abstract, chapters, appendix, references, and o
 If you are writing a thesis, change line 57 of BGSU.cls to \def\@doctype{Thesis}.
 You may also want to rename dissertation.tex to be thesis.tex.
 
-After producing a PDF, you should check that the PDF document properties are set correctly.
-You can check them in Adobe Reader, but if you have to change them, it may be easiest to use Adobe Acrobat.
-Follow the instructions at http://www.bgsu.edu/graduate/thesis-and-dissertations/converting-your-document-to-pdf.html
-Note that fonts must be embedded; the instructions above tell how to do that.
+After producing a PDF, you will need to use Adobe Acrobat to set document properties and other things.
 Some specific steps:
 
 * In Adobe Acrobat: File, Properties, Keywords, remove the double quotes from the text
 * In Adobe Acrobat: File, Properties, Initial View, Show, Document Title to get the title bar to show the title of the work instead of the filename
+* In Adobe Acrobat: File, Properties, Advanced, Language, English
+* Follow the instructions at http://www.bgsu.edu/graduate/thesis-and-dissertations/converting-your-document-to-pdf.html to embed fonts
+* Follow the instructions at the link above to check accessibility; instead of Full Check it may be called Accessibility Check.
+You can also read this page about the Accessibility Check: https://helpx.adobe.com/acrobat/using/create-verify-pdf-accessibility.html
+* One step in the Accessibility Check is to set alternate text for each figure (image) and table.
+Follow the instructions at the link above concerning number of characters and content of the alternate text.
+I don't know how to add alt text in the LaTeX source code, so I would recommend keeping a separate file with alt text for each image, which you can copy and paste in one step at the end.
+* The link above explains how to check the reading order on each page of your document.
+Level 1 headings need to be marked.
+Essentially you need to scroll through your document, drag a box around the heading at the beginning of each chapter, and click Heading 1.
+Also do this for the Abstract, Table of Contents, List of Figures, Chapters, Bibliography, Appendices.
+It should also be done for the headings of Acknowledgments, List of Tables, Preface, but these may be recognized as tables and so cannot be marked as Heading 1.
+You can see what type each element is by checking Structure types.
+Also look for any text that is not in a gray box or is not in order on the page.
 
-In Fall 2021, additional accessibility requirements were being checked by the BGSU Thesis & Dissertation Services Office, and it became more difficult to get LaTeX to accomplish all that is needed.
-Work closely with the people in that office to get your document in shape.
-Here are some suggestions based on the experiences of a student who worked on this.
+A problem with LaTeX documents is that hyperlinks within the document are not tagged as being hyperlinks, so a visually impaired person might not know that they are hyperlinks.
+Hopefully we will find a good way to deal with this, but for now:
 
-A potential problem is that hyperlinks within the document are not tagged as being hyperlinks, so a visually impaired person might not know that they are hyperlinks.
-
-* Hopefully we will find a good way to deal with this.
-* A last ditch approach is to remove all hyperlinks using Adobe Acrobat and following: Print Production, Preflight, Flatten annotations and form field.
-This wipes the hyperlinks that LaTeX provided.
-Submit the "flat" version as the official dissertation and the version with hyperlinks as a Supplemental File for OhioLink.
+* The only method that is known to work as of 2/20/2022 is this:  remove all hyperlinks using Adobe Acrobat following these steps: Print Production, Preflight, Flatten annotations and form field.
+This wipes the hyperlinks that LaTeX provided, making the document compliant.
+You can submit the "flat" version to OhioLink as the official dissertation and the version with hyperlinks as a Supplemental File for OhioLink.
 
 Additional suggestions:
 
-* Use the Adobe Acrobat Pro accessibility checker at (https://helpx.adobe.com/acrobat/using/create-verify-pdf-accessibility.html)  Basic instructions: Tools, scroll down to Accessibility, Accessibility Check, Start Checking, Accessibility Report, read the results in the left pane.
 * Consider downloading and running the PDF Accessibility Checker from (https://pdfua.foundation/en) on your final PDF.
 
 This online question and answer site has many suggestions that may be helpful:
 https://tex.stackexchange.com/questions/545903/creating-a-pdf-a-pdf-x-and-pdf-ua-multistandard-compliant-thesis-or-paper
 
+# Additional notes for possible future use
+
 It is important that equations can be read out loud with a screen reader.
-As of 2/20/2022, pdfLaTeX produced a version that could be read by the Adobe Reader Read Out Loud feature, so the instructions below do not seem to be necessary, but they are kept here in case they become necessary.
-When you are done writing your thesis or dissertation, re-run LaTeX on it using the LaTeX axessibility package following these steps:
+As of 2/20/2022, pdfLaTeX produced a version that could be read by the Adobe Reader Read Out Loud feature.
+The LaTeX axessibility package is designed to produce text for typeset mathematics that can be read by a screen reader, but it did not work as well as what was produced without the axessibility pacakge.
+In case this changes in the future, the instructions below may be helpful.
 
 * Edit your main LaTeX file dissertation.tex or thesis.tex to comment out the \documentclass{BGSU} line and uncomment the lines that use \documentclass{BGSUaccessible}
 * Process your document with LuaLaTeX so that a screen reader can pronounce the content of your math equations.
