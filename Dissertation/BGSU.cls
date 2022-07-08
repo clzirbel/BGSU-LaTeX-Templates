@@ -1,9 +1,5 @@
 % BGSU class by Nate Iverson
-% Complies with BGSU's dissertation policies
-% So far the only option is to select runningheaders
-% Native options:
-%
-% runningheader
+% Intended to comply with BGSU's dissertation policies, but that is a moving target
 % thesis
 % raggedbottom (default)
 % linktocpage (makes the link in the table of contents the page number instead of the text)
@@ -301,17 +297,16 @@
 }
 
 % redefine the plain pagestyle, used by TOC, list of tables
+% Updated on 2022-07-08 to suppress running headers
+% Maybe fancyhdr changed its commands recently
 \usepackage{fancyhdr}
-\fancypagestyle{plain}{%
-\fancyhf{} % clear all header and footer fields
-\fancyhead{} % clear all header fields
-\fancyfoot{} % clear all footer fields
-\fancyhead[R]{\thepage}
-%\fancyhead[L]{\thepage}
+\pagestyle{fancy}
+\fancyhead[LE,RO]{\thepage}  % page number location
+\fancyhead[RE,LO]{}          % no running header
+\fancyfoot{}
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
-\renewcommand{\headheight}{15pt}    % stops LaTeX from complaining
-}
+\renewcommand{\headheight}{15pt}    
 
 
 % This should fix a problem with the chapters changing the pagestyle
