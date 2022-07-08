@@ -149,7 +149,7 @@
 
 \pagestyle{\@hstyle}
 
-% define some variable for the BGSU maketitle.
+% define some variables for the BGSU maketitle.
 % gfr is Graduate Faculty Advisor
 % Committee is the remainder of the committee with
 % a \\ \\ after each name.
@@ -223,7 +223,7 @@
     \parbox{3.25in}{
     \noindent Committee: \\
 
-    \noindent \@advisor , Advisor\\
+    \noindent \@advisor , Committee Chair\\
     
     % only a doctoral dissertation needs a GFR
     \ifthenelse{\equal{\@doctype}{Dissertation}}{
@@ -271,7 +271,7 @@
 \label{abstract}
 \thispagestyle{myheadings}
 \begin{center} ABSTRACT\\ \end{center}
-  \begin{flushleft}{\@advisor , Advisor\\} \end{flushleft}
+  \begin{flushleft}{\@advisor , Committee Chair\\} \end{flushleft}
 
 }{\clearpage 
 }
