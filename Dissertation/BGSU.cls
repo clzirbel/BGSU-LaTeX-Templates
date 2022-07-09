@@ -20,7 +20,7 @@
 % fleqn
 % openbib
 % colorlinks
-%    This file is part of BGSU.cls The BGSU (Thesis and Dissertaion LaTeX class)
+%    This file is part of BGSU.cls The BGSU (Thesis and Dissertation LaTeX class)
 %
 %    BGSU.cls is free software: you can redistribute it and/or modify
 %    it under the terms of the GNU General Public License as published by
@@ -42,7 +42,9 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{BGSU}[11/23/2016 version 1.1.3]
 \def\@BGSUv{1.1.2}
+
 % Lets us pick the header type by an option
+% This block seems to be super important, you can't delete it, don't know why.
 \def\@hstyle{myheadings}
 \def\@rright{false}
 \DeclareOption{runningheaders}{
@@ -50,18 +52,21 @@
   \def\@hstyle{headings}
 }
 
-\def\@doctype{Dissertation}  %change Dissertation to Thesis for master degree
+% 
+\def\@doctype{Dissertation}  % change Dissertation to Thesis for master degree
 \DeclareOption{thesis}{
   \let\@doctype\empty
   \def\@doctype{Thesis}
 }
+
 \def\@colorlinks{false}
 \DeclareOption{colorlinks}{
 \let\@colorlinks\empty
 \def\@colorlinks{true}
 }
 \DeclareOption{linktocpage}{\PassOptionsToClass{linktocpage}{hyperref}}
-% Pass papersize options to book and geometry.
+
+% Pass papersize options to book and geometry. Recommend not using these.
 \DeclareOption{a4paper}{\PassOptionsToClass{a4paper}{book} 
                         \PassOptionsToPackage{a4paper}{geometry}
                         \PassOptionsToPackage{a4paper}{hyperref}
@@ -126,7 +131,6 @@
 \RequirePackage{ragged2e}
 }{}
 
-% oneside puts all pagenumbers on right hand side
 % 12pt is required 
 
 \LoadClass{book}
@@ -139,11 +143,15 @@
 % of text
 \usepackage{geometry}
 \geometry{margin=1.0in, nofoot, headsep=6pt, footskip=5pt}% options appended.
-% double spacing
+
+% double spacing, required
 \RequirePackage{setspace}
 \doublespacing
 
 \pagestyle{\@hstyle}
+
+% BGSU wants each paragraph indented 1/2 inch
+\setlength{\parindent}{0.5in}
 
 % define some variables for the BGSU maketitle.
 % gfr is Graduate Faculty Advisor
@@ -156,13 +164,16 @@
 \def\gfr#1{\def\@gfr{#1}}
 \def\committee#1{\def\@committee{#1}}
 \def\degree#1{\def\@degree{#1}}
-\def\keywords#1{\def\@keywords{#1}}
 \def\subject#1{\def\@subject{#1}}
+\def\keywords#1{\def\@keywords{#1}}
 %\def\keywords#1{
 %\let\@keywords\empty
 %\def\@keywords{#1}}
 
-% make sure to include pdftex in all relevent packages
+% Avoids the problem where Acrobat puts Keywords in double quotation marks
+\usepackage{hyperxmp}
+
+% make sure to include pdftex in all relevant packages
 % as it will automatically put bookmarks in pdf files generated
 \RequirePackage{hyperref}
 \hypersetup{%
@@ -175,7 +186,7 @@
 
 \renewcommand{\maketitle}{
 {\pdfbookmark[1]{TITLE PAGE}{titlepage}}
-% The below needs to be in the actual document aka after \@author
+% The below needs to be in the actual document after \@author
 % have been defined. That is why here.
 \hypersetup{%
   pdfauthor=\@author,
@@ -186,6 +197,8 @@
 }
 
 \pdfcatalog{/PageLayout /OneColumn}   % single page continuous scrolling
+% Use the following line instead when compiling with LuaLaTeX
+% \pdfextension catalog{/PageLayout /OneColumn}
 
 \begin{titlepage}%
    \singlespacing
@@ -196,7 +209,7 @@
 
     \MakeUppercase{\@title}
     \vspace{1.25in}
-    % Adjusts spacing for masters thesis
+    % Adjusts spacing for master's thesis, smaller committee
     \ifthenelse{\equal{\@doctype}{Dissertation}}{}
     {\vspace*{0.8in}}
 
@@ -233,7 +246,7 @@
     \ifthenelse{\equal{\@doctype}{Thesis}}{
     \noindent \@committee\\
   }
-    }\end{flushright}
+}\end{flushright}
 
 
 \end{titlepage}
@@ -247,7 +260,7 @@
 
 \newcommand{\copyrightpage}{
 %  \pdfbookmark[1]{COPYRIGHT}{copyright}  % not needed in PDF bookmarks
-  \thispagestyle{empty}              % use myheadings if you want a page number
+  \thispagestyle{empty}              % use plain if you want a page number
   \vspace*\fill
   \begin{center}
  \begin{minipage}[!b]{\linewidth}
@@ -265,52 +278,72 @@
 \newenvironment{abstract}{\clearpage
 \pdfbookmark[1]{ABSTRACT}{abstract}
 \label{abstract}
-\thispagestyle{myheadings}
+\thispagestyle{plain}
 \begin{center} ABSTRACT\\ \end{center}
   \begin{flushleft}{\@advisor , Committee Chair\\} \end{flushleft}
+    % leave the next line blank; indents the first line that way
 
 }{\clearpage 
 }
 
 \newenvironment{acknowledgments}{\clearpage
 \pdfbookmark[1]{ACKNOWLEDGMENTS}{Acknowledgments}
-\thispagestyle{myheadings}
+\thispagestyle{plain}
   \begin{center} ACKNOWLEDGMENTS
-  \end{center}
+  \end{center}  % leave the next line blank; indents the first line that way
+  
 }{\clearpage 
 }
 
 \newenvironment{dedication}{\clearpage
-\pdfbookmark[1]{DEDICATION}{dedication}
-\thispagestyle{myheadings}
+%\pdfbookmark[1]{DEDICATION}{dedication}   % dedication should not be bookmarked
+\thispagestyle{plain}
 \begin{center}
-\vspace*{2.5in}
+\vspace*{1.5in}
 }{\end{center}\clearpage
 }
 
 \newenvironment{preface}{\clearpage
-\thispagestyle{myheadings}
 \pdfbookmark[1]{PREFACE}{preface}
+\thispagestyle{plain}
 \begin{center} PREFACE
-\end{center}
+\end{center}  % leave the next line blank; indents the first line that way
+
 }{\clearpage
 }
 
-% redefine the plain pagestyle, used by TOC, list of tables
-% Updated on 2022-07-08 to suppress running headers
-% Maybe fancyhdr changed its commands recently
+% No running headers
 \usepackage{fancyhdr}
 \pagestyle{fancy}
-\fancyhead[LE,RO]{\thepage}  % page number location
-\fancyhead[RE,LO]{}          % no running header
-\fancyfoot{}
+\fancyfoot{}                 % no footer on any page
+\rhead{\thepage}             % page number always in upper right
+\lhead{}                     % nothing on the left side of the header
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
-\renewcommand{\headheight}{15pt}    
+\setlength{\headheight}{15pt}    
 
+% redefine the plain pagestyle, which is used by the TOC, LOF, LOT
+\fancypagestyle{plain}{ 
+\fancyhf{} % clear all header and footer fields 
+\rhead{\thepage}
+\lhead{}
+\renewcommand{\headrulewidth}{0pt} 
+\renewcommand{\footrulewidth}{0pt}
+\renewcommand{\headheight}{15pt}
+}
+
+% make a new page style to move page number on landscape pages
+\fancypagestyle{lscape}{ % define a new page style
+\fancyhf{} % clear all header and footer fields 
+\fancyfoot[L]{}
+\renewcommand{\headrulewidth}{0pt} 
+\renewcommand{\footrulewidth}{0pt}
+\renewcommand{\headheight}{15pt}    % stops LaTeX from complaining
+%\lhead{\rotatebox{90}{123}}        % pretend it's page 123
+\lhead{\rotatebox{90}{\hspace*{-0.0in}\thepage}}    % page number in "upper left" rotated 90 degrees; use \hspace*{-0.5in} if you need to move it left
+}
 
 % This should fix a problem with the chapters changing the pagestyle
-
 \renewcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi
                     \thispagestyle{\@hstyle}%
                     \global\@topnum\z@
@@ -365,8 +398,14 @@
 \renewcommand{\cfttabpagefont}{\mdseries}
 \renewcommand{\cfttableader}{\cftdotfill{\cftdotsep}}
 
+% set lengths in table of contents, list of figures, list of tables
+\setlength{\cftbeforechapskip}{0pt}  % no extra space between chapters in TOC
+\setlength{\cftbeforetoctitleskip}{-25pt}
+\setlength{\cftbeforeloftitleskip}{-25pt}
+\setlength{\cftbeforelottitleskip}{-23pt}   % no idea why, but this aligns better
 
-% This is to ensure that Chapter appears before the TOC
+
+% This is to ensure that Chapter appears before the chapter name in the TOC
 \renewcommand{\chaptername}{CHAPTER}
 \def\@chapter[#1]#2{\ifnum \c@secnumdepth >\m@ne
                        \if@mainmatter
@@ -414,22 +453,11 @@
        {\@latex@warning{Empty `thebibliography' environment}}%
       \endlist}
 
-% make a new page style to move page number on landscape pages
-\fancypagestyle{lscape}{ % define a new page style
-\fancyhf{} % clear all header and footer fields 
-\fancyfoot[L]{}
-\renewcommand{\headrulewidth}{0pt} 
-\renewcommand{\footrulewidth}{0pt}
-\renewcommand{\headheight}{15pt}    % stops LaTeX from complaining
-%\lhead{\rotatebox{90}{123}}        % pretend it's page 123
-\lhead{\rotatebox{90}{\hspace*{-0.0in}\thepage}}    % page number in "upper left" rotated 90 degrees; use \hspace*{-0.5in} if you need to move it left
-}
-
 % The first level headings need to be centered, unbolded and 12 point size
 \usepackage{titlesec}  % change the setting for headings
 \titleformat{\chapter}[hang]% NEW
     {\fontsize{12}{15}\centering}{\chaptertitlename\ \thechapter}{1em}{}  %\fontsize{<size>}{<line space>}
-\titlespacing{\chapter}{0pt}{5pt}{5pt}
+\titlespacing{\chapter}{0pt}{-24pt}{5pt}  % chapter heading 1 inch from top; 24 works best, no idea why
 \titleformat{\section}
     {\fontsize{12}{15}}{\thesection}{5pt}{}
 \titlespacing{\section}{0pt}{5pt}{5pt}
@@ -440,9 +468,9 @@
     {\fontsize{12}{15}}{\thesubsection}{5pt}{}
 \titlespacing{\subsubsection}{0pt}{5pt}{5pt}
 
-% not quite sure what this does
+% adjust chapter headings ... may not work
 \usepackage{etoolbox}  % http://ctan.org/pkg/etoolbox
 \makeatletter          % treat "at" symbol as a letter
 \patchcmd{\l@chapter}{\bfseries}{}{}{}% \patchcmd{<cmd>}{<search>}{<replace>}{<success>}{<failure>}
+% --- Patch \chapter
 \makeatother           % treat "at" symbol as a symbol again
-
