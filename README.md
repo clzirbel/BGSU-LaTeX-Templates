@@ -14,6 +14,8 @@ You may also want to rename dissertation.tex to be thesis.tex.
 Overleaf is an online LaTeX editor, and the current version works well with Overleaf.
 From the Overleaf main menu, click New Project, Import from GitHub, and navigate to https://github.com/clzirbel/BGSU-LaTeX-Templates
 
+Note that when you read the PDF produced by PDF LaTeX, you can use the hyperlinks to navigate within the documents, and use Left Alt-Left arrow to go back to where you were.
+
 After producing a PDF, you will need to use Adobe Acrobat to set document properties and other things.
 Some specific steps:
 
