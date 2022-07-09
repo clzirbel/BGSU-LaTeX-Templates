@@ -4,17 +4,19 @@ See https://www.bgsu.edu/graduate/thesis-and-dissertations/thesis-dissertation-h
 
 Nate Iverson created the first version of this template.  Ying-Ju Chen, John Haman, and Maria Rizzo also made contributions.  Dr. Rizzo also maintains a version of the template, see https://github.com/mariarizzo/BGthesis
 
-The file BGSU.cls contains pretty much all of the BGSU-specific formatting commands.
-Hopefully you will not need to edit it.
 The file dissertation.tex is the central file that you would run with LaTeX.
 There are separate files for the abstract, chapters, appendix, references, and other things.
+The file BGSU.cls contains pretty much all of the BGSU-specific formatting commands.
+Hopefully you will not need to edit it very much.
 If you are writing a thesis, change line 57 of BGSU.cls to \def\@doctype{Thesis}.
 You may also want to rename dissertation.tex to be thesis.tex.
+
+Overleaf is an online LaTeX editor, and the current version works well with Overleaf.
+From the Overleaf main menu, click New Project, Import from GitHub, and navigate to https://github.com/clzirbel/BGSU-LaTeX-Templates
 
 After producing a PDF, you will need to use Adobe Acrobat to set document properties and other things.
 Some specific steps:
 
-* In Adobe Acrobat: File, Properties, Keywords, remove the double quotes from the text
 * In Adobe Acrobat: File, Properties, Initial View, Show, Document Title to get the title bar to show the title of the work instead of the filename
 * In Adobe Acrobat: File, Properties, Advanced, Language, English
 * Follow the instructions at http://www.bgsu.edu/graduate/thesis-and-dissertations/converting-your-document-to-pdf.html to embed fonts
@@ -47,7 +49,7 @@ As of 2/20/2022, pdfLaTeX produced a version that could be read by the Adobe Rea
 The LaTeX axessibility package is designed to produce text for typeset mathematics that can be read by a screen reader, but it did not work as well as what was produced without the axessibility pacakge.
 In case this changes in the future, the instructions below may be helpful.
 
-* Edit your main LaTeX file dissertation.tex or thesis.tex to comment out the \documentclass{BGSU} line and uncomment the lines that use \documentclass{BGSUaccessible}
+* Edit lines marked with LuaLaTeX in BGSU.cls
 * Process your document with LuaLaTeX so that a screen reader can pronounce the content of your math equations.
 If you are running LaTeX on your own computer, this may require installing several packages.
 On overleaf, upload the project, then click the Menu and set the compiler to LuaLaTeX.
