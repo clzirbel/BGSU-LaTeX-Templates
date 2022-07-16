@@ -21,6 +21,7 @@ Some specific steps:
 
 * In Adobe Acrobat: File, Properties, Initial View, Show, Document Title to get the title bar to show the title of the work instead of the filename
 * In Adobe Acrobat: File, Properties, Advanced, Language, English
+* In Adobe Acrobat: File, Properties, remove any double quotation marks from the Keywords
 * Follow the instructions at http://www.bgsu.edu/graduate/thesis-and-dissertations/converting-your-document-to-pdf.html to embed fonts
 * Follow the instructions at the link above to check accessibility; instead of Full Check it may be called Accessibility Check.
 You can also read this page about the Accessibility Check: https://helpx.adobe.com/acrobat/using/create-verify-pdf-accessibility.html
