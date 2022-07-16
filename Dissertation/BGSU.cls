@@ -44,7 +44,7 @@
 \def\@BGSUv{1.1.2}
 
 % Lets us pick the header type by an option
-% This block seems to be super important, you can't delete it, don't know why.
+% This block seems to be super important, you can't delete it, I don't know why.
 \def\@hstyle{myheadings}
 \def\@rright{false}
 \DeclareOption{runningheaders}{
@@ -114,6 +114,7 @@
 }
 \DeclareOption{raggedbottom}{\raggedbottom}
 \DeclareOption{flushbottom}{\flushbottom}
+
 \DeclareOption{raggedright}{\def\@rright{true}}
 
 \PassOptionsToClass{12pt}{book}
@@ -127,9 +128,8 @@
 
 \RequirePackage{ifthen}
 \RequirePackage{calc}
-\ifthenelse{\equal{\@rright}{true}}{
-\RequirePackage{ragged2e}
-}{}
+
+%\RequirePackage[document]{ragged2e}  % This package does not seem to work well; the right justification keeps returning in different sections, and it goes beyond the right margin as well.
 
 % 12pt is required 
 
@@ -150,9 +150,6 @@
 
 \pagestyle{\@hstyle}
 
-% BGSU wants each paragraph indented 1/2 inch
-\setlength{\parindent}{0.5in}
-
 % define some variables for the BGSU maketitle.
 % gfr is Graduate Faculty Advisor
 % Committee is the remainder of the committee with
@@ -170,8 +167,11 @@
 %\let\@keywords\empty
 %\def\@keywords{#1}}
 
-% Avoids the problem where Acrobat puts Keywords in double quotation marks
-\usepackage{hyperxmp}
+% The hyperxmp package is *supposed* to avoid the problem
+% where Acrobat puts keywords in double quotation marks.
+% However, now it duplicates the keywords and puts them
+% in double quotes.  
+%\usepackage{hyperxmp}
 
 % make sure to include pdftex in all relevant packages
 % as it will automatically put bookmarks in pdf files generated
@@ -193,7 +193,7 @@
   pdftitle=\@title,
   pdfsubject=\@subject,
   pdfkeywords=\@keywords,
-  pdfcreator={BGSU.cls v\@BGSUv \ by Nate Iverson},
+  pdfcreator={BGSU.cls v\@BGSUv by Nate Iverson},
 }
 
 \pdfcatalog{/PageLayout /OneColumn}   % single page continuous scrolling
@@ -254,8 +254,10 @@
   \clearpage
   \doublespacing
   \setcounter{page}{2}
-  \ifthenelse{\equal{\@rright}{true}}{
-  \RaggedRight}{}
+  % BGSU wants each paragraph indented 1/2 inch
+  % This works, but then if you break a line with \\
+  % the next line will be indented, so then use \noindent
+  \setlength{\parindent}{0.5in}
 }
 
 \newcommand{\copyrightpage}{
@@ -358,17 +360,18 @@
 %}
 % For some reason the above does not work, gone back to old method
 
+% package for building table of contents, lists of figures, tables
+\usepackage{tocloft}
+
 % Build the table of contents with the right name
-\renewcommand{\contentsname}{TABLE OF CONTENTS}
+\renewcommand{\contentsname}{\centerline{TABLE OF CONTENTS}}
 \renewcommand{\tableofcontents}{\clearpage
 \@makechapterhead{\contentsname}
 \@starttoc{toc}
 }
-
 % put dots after chapter names in the table of contents, "Page" above page #'s
-\usepackage{tocloft}
-\renewcommand{\cfttoctitlefont}{\hfill\mdseries}    % important for centering
-\renewcommand{\cftaftertoctitle}{\hfill\hfill\\{\mbox{~}\hfill{Page}}\vspace*{-0.7in}}
+\renewcommand{\cfttoctitlefont}{\hfil\mdseries}    % important for centering
+\renewcommand{\cftaftertoctitle}{\hfil\null\\{\mbox{~}\hfill{Page}}\vspace*{-0.5in}}
 \renewcommand{\cftchapfont}{\mdseries}
 \renewcommand{\cftchappagefont}{\mdseries}
 \renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
@@ -381,7 +384,7 @@
 }
 \renewcommand{\figurename}{Figure}
 \renewcommand\cftloftitlefont{\hfil\mdseries}
-\renewcommand{\cftafterloftitle}{\hfil\null\\\hfill{{Figure}\hfill{Page}}\vspace*{-0.5in}}
+\renewcommand{\cftafterloftitle}{\hfil\null\\{{Figure}\hfill{Page}}\vspace*{-0.5in}}
 \renewcommand{\cftfigfont}{\mdseries}
 \renewcommand{\cftfigpagefont}{\mdseries}
 \renewcommand{\cftfigleader}{\cftdotfill{\cftdotsep}}
@@ -393,7 +396,7 @@
 \@starttoc{lot}
 }
 \renewcommand\cftlottitlefont{\hfil\mdseries}
-\renewcommand{\cftafterlottitle}{\hfil\null\\\hfill{{Table}\hfill{Page}}\vspace*{-0.5in}}
+\renewcommand{\cftafterlottitle}{\hfil\null\\{{Table}\hfill{Page}}\vspace*{-0.5in}}
 \renewcommand{\cfttabfont}{\mdseries}
 \renewcommand{\cfttabpagefont}{\mdseries}
 \renewcommand{\cfttableader}{\cftdotfill{\cftdotsep}}
@@ -468,7 +471,7 @@
     {\fontsize{12}{15}}{\thesubsection}{5pt}{}
 \titlespacing{\subsubsection}{0pt}{5pt}{5pt}
 
-% adjust chapter headings ... may not work
+% adjust chapter headings ... not sure this works
 \usepackage{etoolbox}  % http://ctan.org/pkg/etoolbox
 \makeatletter          % treat "at" symbol as a letter
 \patchcmd{\l@chapter}{\bfseries}{}{}{}% \patchcmd{<cmd>}{<search>}{<replace>}{<success>}{<failure>}

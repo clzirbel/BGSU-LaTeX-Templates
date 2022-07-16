@@ -75,6 +75,7 @@
 %\newtheorem{corollary}[equation]{Corollary}
 %\newtheorem{example}[equation]{Example}
 
+\raggedright   % BGSU requires no right justification
 
 % Change the text inside each of the curly braces below ------------------------
 \title{An example dissertation}
@@ -84,14 +85,15 @@
 \advisor{Corneliu Hoffman}    % also known as committee chair
 \gfr{Darth Vader}     % graduate faculty representative
 \committee{Kit Chan \\ \\ Warren McGovern}  % other committee members
-\subject{Algebra; statistics} % edit this for your area! Use broad terms
-\keywords{Algebraic topology, Bayesian analysis} % be more specific here
+\subject{Algebra} % edit this for your area! Use broad terms
+\keywords{Algebraic topology; Bayesian analysis} % be more specific here, separate keywords with semicolons
 
 \begin{document}
 
 \frontmatter   % makes page numbers lower case roman
 
 \maketitle     % produce the title page using the information above
+               % don't worry if it says underfull line.
 
 \copyrightpage % copyrighting your dissertation is optional
 
@@ -114,7 +116,7 @@
 \input{frontmatter/acknowledgments}
 \end{acknowledgments}
 
-\pdfbookmark[section]{\contentsname}{toc}  % put toc in PDF bookmarks
+\pdfbookmark[section]{TABLE OF CONTENTS}{toc}  % put toc in PDF bookmarks
 \tableofcontents
 \pagebreak
 \pdfbookmark[section]{LIST OF FIGURES}{figures}
