@@ -32,7 +32,7 @@ Test Statistic & 25.3182 & 24.6395 & 24.6049 & 25.6623 & 27.1320 & 29.3247\\ \hl
 %If you use the package natbib for citations, here is the example how to cite an article.
 %Many thanks to Dr. Maria Rizzo who worked this section.
 
-The easiest way to cite published works is to look them up with an online tool like\\ scholar.google.com, copy the BibTeX citation information into the file reference.bib (click the double quotes under the article in Google Scholar), then run BibTex on dissertation.tex.
+The easiest way to cite published works is to look them up with an online tool like\\ \noindent scholar.google.com, copy the BibTeX citation information into the file reference.bib (click the double quotes under the article in Google Scholar), then run BibTex on dissertation.tex.
 Below are the commands to insert citations into your dissertation.
 
 To cite an article use cite, citet, or citep.
@@ -69,7 +69,9 @@ This section illustrates the appearance of definitions, theorems, proofs, and si
 When it says Definition 1.1, that means that it is the first definition in Chapter 1, then Definition 1.2 is the second definition in Chapter 1.
 The section number is not part of the numbering.
 
-\pagebreak  % to make it faster to hear a screen reader
+There is a page break here to make it easier to start a screen reader to hear how it reads the equations on the next page.
+
+\pagebreak  
 
 \begin{definition}
 We say that $\lim_{x \to a} f(x) = L$ if for all $\varepsilon > 0$, there exists $\delta > 0$ such that for all $x \in (a-\delta,a+\delta),$ we have $|f(x) - L| < \varepsilon$.
@@ -131,4 +133,6 @@ You can get numbering like that by changing certain lines in the preamble of the
 
 Once again, we can refer back to Equation \ref{PythagoreanTheorem}.
 We can also refer to Equation \ref{squarebinomial}.
+Note that when you are reading the PDF version of this document and you click a link to take you to an equation or a reference, you can press Left Alt plus the left arrow key to get back to where you were.
+That's pretty arcane, but it sure helps you navigate a PDF.
 
