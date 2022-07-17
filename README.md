@@ -16,7 +16,7 @@ From the Overleaf main menu, click New Project, Import from GitHub, and navigate
 
 Note that when you read the PDF produced by PDF LaTeX, you can use the hyperlinks to navigate within the documents, and use Left Alt-Left arrow to go back to where you were.
 
-After producing a PDF, you will need to use Adobe Acrobat to set document properties and other things.
+After finishing your dissertation or thesis (congratulations!) and producing a PDF, you will need to use Adobe Acrobat to set document properties and other things before you submit to BGSU.
 Some specific steps:
 
 * In Adobe Acrobat: File, Properties, Initial View, Show, Document Title to get the title bar to show the title of the work instead of the filename
@@ -29,6 +29,7 @@ You can also read this page about the Accessibility Check: https://helpx.adobe.c
 Follow the instructions at the link above concerning number of characters and content of the alternate text.
 I don't know how to add alt text in the LaTeX source code, so I would recommend keeping a separate file with alt text for each image, which you can copy and paste in one step at the end.
 (I tried the accessibility package but was not able to get it to work.)
+If you figure out how to add alt text for each image directly in LaTeX, please let me know.
 * The link above explains how to check the reading order on each page of your document.
 Level 1 headings need to be marked.
 Essentially you need to scroll through your document, drag a box around the heading at the beginning of each chapter, and click Heading 1.
@@ -49,17 +50,16 @@ You can submit the "flat" version to OhioLink as the official dissertation and t
 
 It is important that equations can be read out loud with a screen reader.
 As of 2/20/2022, pdfLaTeX produced a version that could be read by the Adobe Reader Read Out Loud feature.
-The LaTeX axessibility package is designed to produce text for typeset mathematics that can be read by a screen reader, but it did not work as well as what was produced without the axessibility pacakge.
-In case this changes in the future, the instructions below may be helpful.
+To hear what it sounds like, follow these steps.
 
-* Edit lines marked with LuaLaTeX in BGSU.cls
-* Process your document with LuaLaTeX so that a screen reader can pronounce the content of your math equations.
-If you are running LaTeX on your own computer, this may require installing several packages.
-On overleaf, upload the project, then click the Menu and set the compiler to LuaLaTeX.
-This may be the easiest way to get it to work.
-* Check that equations can be read out loud using Adobe Reader.
-You may have to first open Adobe Reader, then Edit, Preferences, Security (Enhanced), uncheck Enable Protected Mode at startup.
-Then re-start Adobe Reader.
-Then open your PDF with Adobe Reader and do:  View, Read Out Loud, Activate Read Out Loud, View, Read Out Loud, Read This Page Only.
-Note:  The spoken version of equations may still not work very well.
+* Open Adobe Reader, then Edit, Preferences, Security (Enhanced), uncheck Enable Protected Mode at startup.
+Re-start Adobe Reader and open your PDF and do:  View, Read Out Loud, Activate Read Out Loud, View, Read Out Loud, Read This Page Only.
+
+The LaTeX axessibility package is designed to produce text for typeset mathematics that can be read by a screen reader, but it did not work as well as what was produced without the axessibility pacakge.
+For now, the recommendation is to not use the axessibility package.
 Hopefully the axessibility package will improve over time.
+In case this changes in the future, here is how to use the axessibility package.
+Process your document with LuaLaTeX.
+If you are running LaTeX on your own computer, this may require installing several packages.
+On Overleaf, upload the project, then click the Menu and set the compiler to LuaLaTeX.
+Code in dissertation.tex and BGSU.cls will detect that you are using LuaLaTeX and will load the axessibility package and other packages.
