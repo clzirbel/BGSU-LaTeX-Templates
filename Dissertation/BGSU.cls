@@ -126,8 +126,7 @@
 
 \DeclareOption{raggedbottom}{\raggedbottom}
 \DeclareOption{flushbottom}{\flushbottom}
-
-\DeclareOption{raggedright}{\def\@rright{true}}
+%\DeclareOption{raggedright}{\def\@rright{true}} % maybe not needed
 
 % 12pt is required 
 \PassOptionsToClass{12pt}{book}
@@ -185,12 +184,7 @@
 % in double quotes.  
 %\usepackage{hyperxmp}
 
-\ifcsname directlua\endcsname
-% material for LuaLaTeX
-\else
-% for regular LaTeX
-% make sure to include pdftex in all relevant packages
-% as it will automatically put bookmarks in pdf files generated
+% automatically put bookmarks in pdf files generated
 \RequirePackage{hyperref}
 \hypersetup{%
   bookmarksnumbered,
@@ -199,7 +193,6 @@
   pdfstartview= FitH,
   colorlinks=false,
 }
-\fi
 
 \renewcommand{\maketitle}{
 {\pdfbookmark[1]{TITLE PAGE}{titlepage}}
@@ -429,8 +422,8 @@
 \setlength{\cftbeforelottitleskip}{-23pt}   % no idea why, but this aligns better
 
 
-% This is to ensure that Chapter appears before the chapter name in the TOC
-\renewcommand{\chaptername}{CHAPTER}
+\renewcommand{\chaptername}{CHAPTER} % capitalize CHAPTER
+% This is to ensure that CHAPTER appears before the chapter name in the TOC
 \def\@chapter[#1]#2{\ifnum \c@secnumdepth >\m@ne
                        \if@mainmatter
                          \refstepcounter{chapter}%
@@ -479,7 +472,7 @@
 
 % The first level headings need to be centered, unbolded and 12 point size
 \usepackage{titlesec}  % change the setting for headings
-\titleformat{\chapter}[hang]% NEW
+\titleformat{\chapter}[hang]
     {\fontsize{12}{15}\centering}{\chaptertitlename\ \thechapter}{1em}{}  %\fontsize{<size>}{<line space>}
 \titlespacing{\chapter}{0pt}{-24pt}{5pt}  % chapter heading 1 inch from top; 24 works best, no idea why
 \titleformat{\section}
@@ -492,7 +485,7 @@
     {\fontsize{12}{15}}{\thesubsection}{5pt}{}
 \titlespacing{\subsubsection}{0pt}{5pt}{5pt}
 
-% adjust chapter headings ... not sure this works
+% adjust chapter headings ... not sure this does anything
 \usepackage{etoolbox}  % http://ctan.org/pkg/etoolbox
 \makeatletter          % treat "at" symbol as a letter
 \patchcmd{\l@chapter}{\bfseries}{}{}{}% \patchcmd{<cmd>}{<search>}{<replace>}{<success>}{<failure>}
