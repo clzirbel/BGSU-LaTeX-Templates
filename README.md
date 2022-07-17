@@ -46,6 +46,9 @@ Hopefully we will find a good way to deal with this, but for now:
 This wipes the hyperlinks that LaTeX provided, making the document compliant.
 You can submit the "flat" version to OhioLink as the official dissertation and the version with hyperlinks as a Supplemental File for OhioLink.
 
+Overleaf has a helpful article about tagging PDFs, see https://www.overleaf.com/learn/latex/An_introduction_to_tagged_PDF_files%3A_internals_and_the_challenges_of_accessibility
+Hopefully over time Overleaf and the LaTeX community will develop better tools for making accessible PDFs.
+
 # Notes for possible future use
 
 It is important that equations can be read out loud with a screen reader.
