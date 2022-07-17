@@ -17,18 +17,23 @@
 %    itself. Any actual document content (such as your thesis or dissertation text)
 %    belongs solely to you and you can do with it what you please.
 
+\ifcsname directlua\endcsname
+% material for LuaLaTeX
+\RequirePackage{pdfmanagement-testphase}
+\DeclareDocumentMetadata{pdfversion=1.7,lang=en-UK}
+\else
+% material for regular LaTeX
+\fi
 
-%%% Use the following line as you write your dissertation
-\documentclass{BGSU}  % compile with pdflatex
+% Load a number of options from BGSU.cls for the BGSU format
+\documentclass{BGSU}
 
-
-%%% The following lines could be used to use the axessibility package,
-%%% if pdfLaTeX does not produce text that can be read by a screen reader
-%%% Keep the lines in this unusual order
-%\RequirePackage{pdfmanagement-testphase}
-%\DeclareDocumentMetadata{pdfversion=1.7,lang=en-UK}
-%\documentclass{BGSUaccessible}  % compile with lualatex
-%\usepackage{axessibility} % this package will make equations readable by screen readers
+\ifcsname directlua\endcsname
+% material for LuaLaTeX
+\usepackage{axessibility} % this package will make equations readable by screen readers
+\else
+% material for regular LaTeX
+\fi
 
 
 % For thesis, open BGSU.cls and change the relevant line to \def\@doctype{Thesis}

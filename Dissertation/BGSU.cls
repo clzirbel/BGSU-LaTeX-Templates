@@ -64,7 +64,13 @@
 \let\@colorlinks\empty
 \def\@colorlinks{true}
 }
+
+\ifcsname directlua\endcsname
+% material for LuaLaTeX
+\else
+% material for regular LaTeX
 \DeclareOption{linktocpage}{\PassOptionsToClass{linktocpage}{hyperref}}
+\fi
 
 % Pass papersize options to book and geometry. Recommend not using these.
 \DeclareOption{a4paper}{\PassOptionsToClass{a4paper}{book} 
@@ -99,24 +105,31 @@
 % pass unknown options to book
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
 
+
+\ifcsname directlua\endcsname
+% material for LuaLaTeX
+\DeclareOption{pdftex}{\PassOptionsToPackage{pdftex}{geometry}}
+\DeclareOption{dvipdfm}{\PassOptionsToPackage{dvipdfm}{geometry}}
+\DeclareOption{dvips}{\PassOptionsToPackage{dvips}{geometry}}
+\else
+% material for regular LaTeX
 % pass hyperref options to ensure chapters are converted to
 % PDF bookmarks passing it to geometry actually makes sure
 % you convert to the correct paper size too!
-
 \DeclareOption{pdftex}{\PassOptionsToPackage{pdftex}{hyperref}
 \PassOptionsToPackage{pdftex}{geometry}}
-
-\DeclareOption{dvipdfm}{\PassOptionsToPackage{dvipdfm}{hyperref}
-\PassOptionsToPackage{dvipdfm}{geometry}}
-
+\DeclareOption{dvipdfm}{\PassOptionsToPackage{dvipdfm}{hyperref}\PassOptionsToPackage{dvipdfm}{geometry}}
 \DeclareOption{dvips}{\PassOptionsToPackage{dvips}{hyperref}
-\PassOptionsToPackage{dvips}{geometry}
-}
+\PassOptionsToPackage{dvips}{geometry}}
+\fi
+
+
 \DeclareOption{raggedbottom}{\raggedbottom}
 \DeclareOption{flushbottom}{\flushbottom}
 
 \DeclareOption{raggedright}{\def\@rright{true}}
 
+% 12pt is required 
 \PassOptionsToClass{12pt}{book}
 \PassOptionsToClass{oneside}{book}
 
@@ -131,7 +144,6 @@
 
 %\RequirePackage[document]{ragged2e}  % This package does not seem to work well; the right justification keeps returning in different sections, and it goes beyond the right margin as well.
 
-% 12pt is required 
 
 \LoadClass{book}
 %\usepackage[noTeX]{mmap}    % causes a warning, doesn't seem important
@@ -173,6 +185,10 @@
 % in double quotes.  
 %\usepackage{hyperxmp}
 
+\ifcsname directlua\endcsname
+% material for LuaLaTeX
+\else
+% for regular LaTeX
 % make sure to include pdftex in all relevant packages
 % as it will automatically put bookmarks in pdf files generated
 \RequirePackage{hyperref}
@@ -183,6 +199,7 @@
   pdfstartview= FitH,
   colorlinks=false,
 }
+\fi
 
 \renewcommand{\maketitle}{
 {\pdfbookmark[1]{TITLE PAGE}{titlepage}}
@@ -196,9 +213,13 @@
   pdfcreator={BGSU.cls v\@BGSUv by Nate Iverson},
 }
 
+\ifcsname directlua\endcsname
+% material for LuaLaTeX
+\pdfextension catalog{/PageLayout /OneColumn}
+\else
+% for regular LaTeX
 \pdfcatalog{/PageLayout /OneColumn}   % single page continuous scrolling
-% Use the following line instead when compiling with LuaLaTeX
-% \pdfextension catalog{/PageLayout /OneColumn}
+\fi
 
 \begin{titlepage}%
    \singlespacing
