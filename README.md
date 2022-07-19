@@ -19,13 +19,16 @@ Note that when you read the PDF produced by PDF LaTeX, you can use the hyperlink
 After finishing your dissertation or thesis (congratulations!) and producing a PDF, you will need to use Adobe Acrobat to set document properties and other things before you submit to BGSU.
 Some specific steps:
 
+* In Adobe Acrobat: File, Properties, Description, remove any double quotation marks from the Keywords
 * In Adobe Acrobat: File, Properties, Initial View, Show, Document Title to get the title bar to show the title of the work instead of the filename
 * In Adobe Acrobat: File, Properties, Advanced, Language, English
-* In Adobe Acrobat: File, Properties, remove any double quotation marks from the Keywords
 * Follow the instructions at http://www.bgsu.edu/graduate/thesis-and-dissertations/converting-your-document-to-pdf.html to embed fonts
-* Follow the instructions at the link above to check accessibility; instead of Full Check it may be called Accessibility Check.
+* Follow the instructions at the link above to check accessibility; instead of Full Check it may be called Accessibility Check.  Work through all of the red x's to fix them.
 You can also read this page about the Accessibility Check: https://helpx.adobe.com/acrobat/using/create-verify-pdf-accessibility.html
 * One step in the Accessibility Check is to set alternate text for each figure (image) and table.
+Do this last, after Acrobat has tagged the document.
+If you follow the instructions above, add alt text only in Step 9, which are steps for LaTeX users.
+That way, you will only have to add alt text once.
 Follow the instructions at the link above concerning number of characters and content of the alternate text.
 I don't know how to add alt text in the LaTeX source code, so I would recommend keeping a separate file with alt text for each image, which you can copy and paste in one step at the end.
 (I tried the accessibility package but was not able to get it to work.)
