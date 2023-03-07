@@ -1,0 +1,175 @@
+%    This file is part of BGSU.cls The BGSU (Thesis and Dissertation LaTeX class)
+%
+%    BGSU.cls is free software: you can redistribute it and/or modify
+%    it under the terms of the GNU General Public License as published by
+%    the Free Software Foundation, either version 3 of the License, or
+%    (at your option) any later version.
+%
+%    BGSU.cls is distributed in the hope that it will be useful,
+%    but WITHOUT ANY WARRANTY; without even the implied warranty of
+%    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+%    GNU General Public License for more details.
+%
+%    You should have received a copy of the GNU General Public License
+%    along with BGSU.cls  If not, see <http://www.gnu.org/licenses/>.
+%
+%    Note that this only applies to the example and template files and BGSU.cls
+%    itself. Any actual document content (such as your thesis or dissertation text)
+%    belongs solely to you and you can do with it what you please.
+%
+%    Another note: Latex is currently working on a solution regarding making
+%    accessible documents. At this point in time, tagging a document and
+%    unrecognized unicode characters are two common errors in an accessibility 
+%    check with Adobe Pro. There is no known solutions, but some have suggested
+%    compiling with LuaLaTeX or XeLaTeX instead of pdfLaTeX. If you are using 
+%    Overleaf, this can be done by going to Menu (upper left corner), then changing
+%    the Compiler.
+
+\ifcsname directlua\endcsname
+% material for LuaLaTeX
+\RequirePackage{pdfmanagement-testphase}
+\DeclareDocumentMetadata{pdfversion=1.7,lang=en-UK}
+\else
+% material for regular LaTeX
+\fi
+
+% Load a number of options from BGSU.cls for the BGSU format
+\documentclass{BGSU}
+
+\ifcsname directlua\endcsname
+% material for LuaLaTeX
+\usepackage{axessibility} % this package will make equations readable by screen readers
+\else
+% material for regular LaTeX
+\fi
+
+
+% For thesis, open BGSU.cls and change the relevant line to \def\@doctype{Thesis}
+
+% packages amsmath and amsthm are loaded in the .cls file
+
+\usepackage{amsmath}   % load the AMS math package
+\usepackage{amsthm}    % allows AMS definitions for theorems, proofs, etc.
+\usepackage{amssymb}   % allows the use of AMS symbols like blackboard bold
+\usepackage{graphicx}  % for including graphics files and images
+\usepackage{caption}
+\captionsetup[table]{labelsep=space}
+\captionsetup[figure]{labelsep=space}
+\usepackage{epstopdf}
+\usepackage{tocloft}   % package for table of contents
+\usepackage{times}     % Times New Roman (nimbus version)
+\usepackage{listings}  % allows program codes embedded with original forms
+\usepackage{bookmark}  % make it possible to add PDF bookmarks at will
+\usepackage{pdflscape} % make it possible to use landscape environment
+\usepackage[nottoc,notlof,notlot]{tocbibind} % keep list of figures, tables, out of the table of contents, also keep the table of contents out of the table of contents
+\usepackage[longnamesfirst]{natbib} % natbib helps you customize how references appear
+
+% The lines below use separate counters for each theorem, each lemma, each equation, etc.  The counters are re-set at the beginning of each chapter.
+
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{lemma}{Lemma}[chapter]
+\newtheorem{remark}{Remark}[chapter]
+\newtheorem{definition}{Definition}[chapter]
+\newtheorem{convention}{Convention}[chapter]
+\newtheorem{proposition}{Proposition}[chapter]
+\newtheorem{notation}{Notation}[chapter]
+\newtheorem{corollary}{Corollary}[chapter]
+\newtheorem{example}{Example}[chapter]
+
+% The following lines show how you can number theorems, lemmas, etc. using the same counter as equation numbers.  The numbering also indicates what section you are in.  This makes things easier to find in the dissertation, a great help to readers.
+
+%\newtheorem{theorem}[equation]{Theorem}
+%\newtheorem{lemma}[equation]{Lemma}
+%\newtheorem{remark}[equation]{Remark}
+%\newtheorem{definition}[equation]{Definition}
+%\newtheorem{convention}[equation]{Convention}
+%\newtheorem{proposition}[equation]{Proposition}
+%\newtheorem{notation}[equation]{Notation}
+%\newtheorem{corollary}[equation]{Corollary}
+%\newtheorem{example}[equation]{Example}
+
+\raggedright   % BGSU requires no right justification
+
+% Change the text inside each of the curly braces below ------------------------
+\title{An example dissertation}
+\author{Nate Iverson}
+\degree{Doctor of Philosophy}
+\date{August 2007}
+\advisor{Corneliu Hoffman}    % also known as committee chair
+\gfr{Darth Vader}     % graduate faculty representative
+\committee{Kit Chan \\ \\ Warren McGovern}  % other committee members
+\subject{Algebra} % edit this for your area! Use broad terms
+\keywords{Algebraic topology; Bayesian analysis} % be more specific here, separate keywords with semicolons
+
+\begin{document}
+
+\frontmatter   % makes page numbers lower case roman
+
+\maketitle     % produce the title page using the information above
+               % don't worry if it says underfull line.
+
+\copyrightpage % copyrighting your dissertation is optional
+
+% the abstract is required.  Edit the file in the frontmatter folder
+\begin{abstract}
+\input{frontmatter/abstract}
+\end{abstract}
+
+% optional section ``Some students choose to personalize their manuscripts
+% with an appropriate quotation or illustration''
+% formatting and placement is up to you.
+\begin{dedication}
+\input{frontmatter/dedication}
+\end{dedication}
+
+% optional but encouraged section ``as a means to recognize and express
+% appreciation to the people who were influential in preparing and completing
+% the manuscript''
+\begin{acknowledgments}
+\input{frontmatter/acknowledgments}
+\end{acknowledgments}
+
+\pdfbookmark[section]{TABLE OF CONTENTS}{toc}  % put toc in PDF bookmarks
+\tableofcontents
+\pagebreak
+\pdfbookmark[section]{LIST OF FIGURES}{figures}
+\listoffigures
+\pagebreak
+\pdfbookmark[section]{LIST OF TABLES}{tables}
+\listoftables
+\pagebreak
+
+% preface section is optional; comment out the next 3 lines if you don't want it
+\begin{preface}
+\input{frontmatter/preface}
+\end{preface}
+
+\mainmatter % starts over page counter and gives regular page numbers
+
+\input{chapters/chapter1}
+\input{chapters/chapter2}
+\input{chapters/chapter3}
+\input{chapters/chapter4}
+\input{chapters/chapter5}
+
+\backmatter
+
+% Customize the appearance of references
+% using natbib package (you may use other bibliography types). Refer to http://en.wikibooks.org/wiki/LaTeX/Bibliography_Management
+\bibliographystyle{chicago}    %% this one looks best
+%\bibliographystyle{apalike}   %% looks okay for dissertations but it puts quotes around titles in references
+\setcitestyle{authoryear, open={((},close={))}}
+% use the file reference.bib
+\bibliography{reference}
+\thispagestyle{plain}      % no running headers in the bibliography
+
+% Make sure to run ``bibtex dissertation'' to create certain internal BibTeX files
+
+% appendix section: if you have more than one appendix section, you should label them as APPENDIX A, APPENDIX B, ....
+\mbox{}\newpage
+\phantomsection
+\appendix
+\input{chapters/appendix}
+\phantomsection % this helps the links in the Table of Contents actually get you to Appendix B; use this between every appendix if you have more than two appendices.
+\input{chapters/appendixB}
+\end{document}
