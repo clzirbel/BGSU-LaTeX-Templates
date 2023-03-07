@@ -206,13 +206,19 @@
   pdfcreator={BGSU.cls v\@BGSUv by Nate Iverson},
 }
 
-\ifcsname directlua\endcsname
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%    This code here was causing errors when trying to compile with LuaLaTeX in 
+%    Overleaf 
+
+%\ifcsname directlua\endcsname
 % material for LuaLaTeX
-\pdfextension catalog{/PageLayout /OneColumn}
-\else
+%\pdfextension catalog{/PageLayout /OneColumn}
+%\else
 % for regular LaTeX
-\pdfcatalog{/PageLayout /OneColumn}   % single page continuous scrolling
-\fi
+%\pdfcatalog{/PageLayout /OneColumn}   % single page continuous scrolling
+%\fi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{titlepage}%
    \singlespacing
