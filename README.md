@@ -23,7 +23,7 @@ Some specific steps:
 * In Adobe Acrobat: File, Properties, Initial View, Show, Document Title to get the title bar to show the title of the work instead of the filename
 * In Adobe Acrobat: File, Properties, Advanced, Language, English
 * Follow the instructions at http://www.bgsu.edu/graduate/thesis-and-dissertations/converting-your-document-to-pdf.html to embed fonts
-* Follow the instructions at the link above to check accessibility; instead of Full Check it may be called Accessibility Check.  Work through all of the red x's to fix them.
+* Follow the instructions at the link above to check accessibility; instead of Full Check it may be called Accessibility Check.  Work through all of the red x's to fix them. A very important thing to note is that you do NOT want to autotag the document. BGSU will work with you regarding this, but the office has stated in the past that this is the one red x you want to avoid.
 You can also read this page about the Accessibility Check: https://helpx.adobe.com/acrobat/using/create-verify-pdf-accessibility.html
 * One step in the Accessibility Check is to set alternate text for each figure (image) and table.
 Do this last, after Acrobat has tagged the document.
@@ -45,7 +45,7 @@ Also look for any text that is not in a gray box or is not in order on the page.
 A problem with LaTeX documents is that hyperlinks within the document are not tagged as being hyperlinks, so a visually impaired person might not know that they are hyperlinks.
 Hopefully we will find a good way to deal with this, but for now:
 
-* The only method that is known to work as of 2/20/2022 is this:  remove all hyperlinks using Adobe Acrobat following these steps: Print Production, Preflight, Flatten annotations and form field.
+* The only method that is known to work as of 2/20/2022 is this:  remove all hyperlinks using Adobe Acrobat following these steps: Print Production, Preflight, Flatten annotations and form field. It may be easiest to do this before checking for accessibility, as hyperlinks are one of the aspects of the document which are checked.
 This wipes the hyperlinks that LaTeX provided, making the document compliant.
 You can submit the "flat" version to OhioLink as the official dissertation and the version with hyperlinks as a Supplemental File for OhioLink.
 
@@ -71,3 +71,5 @@ Process your document with LuaLaTeX.
 If you are running LaTeX on your own computer, this may require installing several packages.
 On Overleaf, upload the project, then click the Menu and set the compiler to LuaLaTeX.
 Code in dissertation.tex and BGSU.cls will detect that you are using LuaLaTeX and will load the axessibility package and other packages.
+
+Another important note is regarding accessibility. The LaTeX project (who officially maintain LaTeX) has announced [a multi-year project in order to fix accessibility (primarily focused on tagging) for LaTeX documents](https://www.latex-project.org/publications/indexbytopic/pdf/). It is important to note that this has caused some accessibility packages (but not axessibility) to be in a form of maintainance mode, that is one with minimal updates due to the expectation they will be obsolete in a couple years. It appears as if the eventual goal of the project will be to integrate accessibility at a fundamental level with LaTeX, although this will take some time.
