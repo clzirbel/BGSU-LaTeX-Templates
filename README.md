@@ -52,6 +52,8 @@ You can submit the "flat" version to OhioLink as the official dissertation and t
 Overleaf has a helpful article about tagging PDFs, see https://www.overleaf.com/learn/latex/An_introduction_to_tagged_PDF_files%3A_internals_and_the_challenges_of_accessibility
 Hopefully over time Overleaf and the LaTeX community will develop better tools for making accessible PDFs.
 
+When you submit to OhioLink, you need to copy and paste the abstract.  If you have LaTeX symbols in the abstract, OhioLink won't understand those, but you can submit HTML codes for the special symbols, and then Preview to see that it is working correctly.  One way to get HTML codes is to use ChatGPT.  The following prompt worked pretty well:  "Please convert the following LaTeX code to HTML in such a way that superscripts and subscpripts and special characters appear correctly on the screen in a web browser, using tags like <sub>."  Preview the HTML version and edit until it looks correct.  Don't just trust ChatGPT!
+
 # Notes for possible future use
 
 It is important that equations can be read out loud with a screen reader.
