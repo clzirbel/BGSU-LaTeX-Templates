@@ -54,7 +54,9 @@ Hopefully over time Overleaf and the LaTeX community will develop better tools f
 
 When you submit to OhioLink, you need to copy and paste the abstract.  If you have LaTeX symbols in the abstract, OhioLink won't understand those, but you can submit HTML codes for the special symbols, and then Preview to see that it is working correctly.  One way to get HTML codes is to use ChatGPT.  The following prompt worked pretty well:
 
->Please convert the following LaTeX code to HTML in such a way that superscripts and subscpripts and special characters appear correctly on the screen in a web browser, using tags <sub>, <sup>, <p>, <em>, <i>, <strong>.  Use italics for mathematics enclosed in $ symbols.  Do not use bold font.  Do not use the <b> tag.  Use special characters such as 𝔻 and ϕ and ∞ when possible instead of HTML codes like &#x2110;.  When converting the LaTeX \frac command use parentheses around the numerator and denominator and use / to indicate division.  Do not change the font-family using a <span> tag.
+```
+Please convert the following LaTeX code to HTML in such a way that superscripts and subscpripts and special characters appear correctly on the screen in a web browser, using tags <sub>, <sup>, <p>, <em>, <i>, <strong>.  Use italics for mathematics enclosed in $ symbols.  Do not use bold font.  Do not use the <b> tag.  Use special characters such as 𝔻 and ϕ and ∞ when possible instead of HTML codes like &#x2110;.  When converting the LaTeX \frac command use parentheses around the numerator and denominator and use / to indicate division.  Do not change the font-family using a <span> tag.
+```
 
 Preview the HTML version and edit until it looks correct.  Don't just trust ChatGPT!
 
