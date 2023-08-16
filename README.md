@@ -16,6 +16,8 @@ From the Overleaf main menu, click New Project, Import from GitHub, and navigate
 
 Note that when you read the PDF produced by PDF LaTeX, you can use the hyperlinks to navigate within the documents, and use Left Alt-Left arrow to go back to where you were.
 
+Note that when you include images from outside sources, you will need to request copyright permission to include those in your dissertation, since it will be published online.  To do this, you will need to send a message to the copyright holder, get their permission, and then include those messages as an appendix in your dissertation.  That will be time consuming and difficult.  It may be better to always make your own images, or just refer to images in other publications without showing them.
+
 After finishing your dissertation or thesis (congratulations!) and producing a PDF, you will need to use Adobe Acrobat to set document properties and other things before you submit to BGSU.
 Some specific steps:
 
@@ -58,7 +60,7 @@ When you submit to OhioLink, you need to copy and paste the abstract.  If you ha
 Please convert the following LaTeX code to HTML in such a way that superscripts and subscpripts and special characters appear correctly on the screen in a web browser, using tags <sub>, <sup>, <p>, <em>, <i>, <strong>.  Use italics for mathematics enclosed in $ symbols.  Do not use bold font.  Do not use the <b> tag.  Use special characters such as 𝔻 and ϕ and ∞ when possible instead of HTML codes like &#x2110;.  When converting the LaTeX \frac command use parentheses around the numerator and denominator and use / to indicate division.  Do not change the font-family using a <span> tag.
 ```
 
-Preview the HTML version and edit until it looks correct.  Don't just trust ChatGPT!
+Save the HTML version in a file called abstract.html and make sure the file starts with ```<html>```.  Double click abstract.html to preview the HTML version and edit until it looks correct.  Don't just trust ChatGPT!
 
 # Notes for possible future use
 
