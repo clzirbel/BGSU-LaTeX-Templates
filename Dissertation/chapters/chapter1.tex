@@ -50,6 +50,14 @@ a chapter or a page number or an equation number:  \citet[Ch.~6]{et93} discuss a
 Add your reference information to the file reference.bib.
 Every time you edit reference.bib, run BibTeX on the dissertation.tex file so that LaTeX will know what the references are.
 
+Some articles have more than two authors, and it's nice if the author list is not so long in the text.
+When there are 3 or more authors, \LaTeX~is supposed to be able to show just the first author and say ``et al.'' for the rest.
+But that is not always working exactly the way I would expect!
+Here are some examples, hopefully you can find something that works.
+This is what we get with cite: \cite{test123}.
+This is what we get with citet: \citet{test123}.
+This is what we get with citep: \citep{test123}.
+This is what we get with citeauthor*:  \citeauthor*{test123}.
 
 \section{Large, wide figures in landscape orientation}
 
