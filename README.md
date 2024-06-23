@@ -25,7 +25,7 @@ Some specific steps:
 * In Adobe Acrobat: File, Properties, Initial View, Show, Document Title to get the title bar to show the title of the work instead of the filename
 * In Adobe Acrobat: File, Properties, Advanced, Language, English
 * Follow the instructions at http://www.bgsu.edu/graduate/thesis-and-dissertations/converting-your-document-to-pdf.html to embed fonts
-* Follow the instructions at the link above to check accessibility; instead of Full Check it may be called Accessibility Check.  Work through all of the red x's to fix them. A very important thing to note is that you do NOT want to autotag the document. BGSU will work with you regarding this, but the office has stated in the past that this is the one red x you want to avoid.
+* Follow the instructions at the link above to check accessibility; instead of Full Check it may be called Accessibility Check.  Work through all of the red x's to fix them. A very important thing to note is that you do NOT want to autotag the document. BGSU will work with you regarding this, but the office has stated in the past that this is the one red x you want to avoid.  If Acrobat is putting very large parentheses randomly in your PDF, that is probably because you auto-tagged, and you should just not auto-tag.
 You can also read this page about the Accessibility Check: https://helpx.adobe.com/acrobat/using/create-verify-pdf-accessibility.html
 * One step in the Accessibility Check is to set alternate text for each figure (image) and table.
 Do this last, after Acrobat has tagged the document.
