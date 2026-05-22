@@ -49,7 +49,7 @@ Hopefully we will find a good way to deal with this, but for now:
 
 * The only method that is known to work as of 2/20/2022 is this:  remove all hyperlinks using Adobe Acrobat following these steps: Print Production, Preflight, Flatten annotations and form field. It may be easiest to do this before checking for accessibility, as hyperlinks are one of the aspects of the document which are checked.
 This wipes the hyperlinks that LaTeX provided, making the document compliant.
-You can submit the "flat" version to OhioLink as the official dissertation and the version with hyperlinks as a Supplemental File for OhioLink.
+You can submit the "flat" version to OhioLink as the official dissertation.
 
 Overleaf has a helpful article about tagging PDFs, see https://www.overleaf.com/learn/latex/An_introduction_to_tagged_PDF_files%3A_internals_and_the_challenges_of_accessibility
 Hopefully over time Overleaf and the LaTeX community will develop better tools for making accessible PDFs.
